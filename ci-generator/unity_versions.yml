@@ -959,13 +959,23 @@
 #  sha1: a579156f3290287e96ce5a0e2abcb19b4b880c09
 #  release_notes: https://blogs.unity3d.com/2018/12/13/introducing-unity-2018-3/
 #  release_url: https://beta.unity3d.com/download/b3c100a4b73a/public_download.html
+#
+# 2018.3.3f1:
+#   latest: true
+#   version: 2018.3.3
+#   build: f1
+#   underscore: 2018_3_3f1
+#   download_url: https://beta.unity3d.com/download/393bae82dbb8/UnitySetup-2018.3.3f1
+#   sha1: 3813a7e49029245cf4d92396352eb07d63209870
+#   release_notes: https://unity3d.com/unity/whats-new/2018.3.3
+#   release_url: https://beta.unity3d.com/download/393bae82dbb8/public_download.html
 
-2018.3.3f1:
+2018.3.4f1:
   latest: true
-  version: 2018.3.3
+  version: 2018.3.4
   build: f1
-  underscore: 2018_3_3f1
-  download_url: https://beta.unity3d.com/download/393bae82dbb8/UnitySetup-2018.3.3f1
-  sha1: 3813a7e49029245cf4d92396352eb07d63209870
-  release_notes: https://unity3d.com/unity/whats-new/2018.3.3
-  release_url: https://beta.unity3d.com/download/393bae82dbb8/public_download.html
+  underscore: 2018_3_4f1
+  download_url: https://beta.unity3d.com/download/1d952368ca3a/UnitySetup-2018.3.4f1
+  sha1: b40122eb0408113adde0d63530fd579637f0c23f
+  release_notes: https://unity3d.com/unity/whats-new/2018.3.4
+  release_url: https://beta.unity3d.com/download/1d952368ca3a/public_download.html
