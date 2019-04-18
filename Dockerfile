@@ -32,6 +32,7 @@ RUN apt-get update -qq; \
     libxcomposite1 \
     libxcursor1 \
     libxdamage1 \
+    libgtk-3-0\
     libxext6 \
     libxfixes3 \
     libxi6 \
