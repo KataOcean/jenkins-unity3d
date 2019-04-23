@@ -63,6 +63,3 @@ RUN wget -nv ${DOWNLOAD_URL} -O unity.deb; \
     rm unity.deb
 
 ADD CACerts.pem /root/.local/share/unity3d/Certificates/
-
-# Clean up
-RUN rm -rf /tmp/* /var/tmp/*
