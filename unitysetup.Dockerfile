@@ -71,12 +71,6 @@ RUN wget -nv ${DOWNLOAD_URL} -O UnitySetup && \
     --download-location=/tmp/unity \
     --components=$COMPONENTS && \
     # remove setup
-    rm UnitySetup && \
-    # make a directory for the certificate Unity needs to run
-    mkdir -p $HOME/.local/share/unity3d/Certificates/
+    rm UnitySetup
 
-ADD CACerts.pem $HOME/.local/share/unity3d/Certificates/
-
-# Clean up
-RUN rm -rf /tmp/* /var/tmp/*
-
+ADD CACerts.pem /root/.local/share/unity3d/Certificates/

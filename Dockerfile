@@ -60,11 +60,6 @@ RUN wget -nv ${DOWNLOAD_URL} -O unity.deb; \
     # install unity
     dpkg -i unity.deb && \
     # remove setup
-    rm unity.deb && \
-    # make a directory for the certificate Unity needs to run
-    mkdir -p $HOME/.local/share/unity3d/Certificates/
+    rm unity.deb
 
-ADD CACerts.pem $HOME/.local/share/unity3d/Certificates/
-
-# Clean up
-RUN rm -rf /tmp/* /var/tmp/*
+ADD CACerts.pem /root/.local/share/unity3d/Certificates/
