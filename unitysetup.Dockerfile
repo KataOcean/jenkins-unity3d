@@ -74,7 +74,3 @@ RUN wget -nv ${DOWNLOAD_URL} -O UnitySetup && \
     rm UnitySetup
 
 ADD CACerts.pem /root/.local/share/unity3d/Certificates/
-
-# Clean up
-RUN rm -rf /tmp/* /var/tmp/*
-
