@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ARG DOWNLOAD_URL
 ARG COMPONENTS=Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
