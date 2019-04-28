@@ -43,6 +43,7 @@ RUN apt-get update -qq; \
     libxrender1 \
     libxtst6 \
     zlib1g \
+    pulseaudio \
     debconf \
     npm \
     xdg-utils \
