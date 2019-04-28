@@ -2,7 +2,11 @@ FROM ubuntu:18.04
 
 ARG DOWNLOAD_URL
 
-RUN apt-get update -qq; \
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+
+RUN echo "America/New_York" > /etc/timezone && \
+    apt-get update -qq; \
     apt-get install -qq -y \
     gconf-service \
     lib32gcc1 \

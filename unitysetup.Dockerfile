@@ -3,7 +3,11 @@ FROM ubuntu:18.04
 ARG DOWNLOAD_URL
 ARG COMPONENTS=Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
 
-RUN apt-get update -qq; \
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+
+RUN echo "America/New_York" > /etc/timezone && \
+    apt-get update -qq; \
     apt-get install -qq -y \
     gconf-service \
     lib32gcc1 \
