@@ -72,7 +72,9 @@ RUN wget -nv ${DOWNLOAD_URL} -O UnitySetup && \
     --verbose \
     --download-location=/tmp/unity \
     --components=$COMPONENTS && \
-    # remove setup
-    rm UnitySetup
+    # remove setup & temp files
+    rm UnitySetup && \
+    rm -rf /tmp/unity && \
+    rm -rf /root/.local/share/Trash/*
 
 ADD CACerts.pem /root/.local/share/unity3d/Certificates/
