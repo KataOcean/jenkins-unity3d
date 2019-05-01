@@ -27,6 +27,7 @@ RUN apt-get update -qq; \
     libglu1-mesa \
     libgtk2.0-0 \
     libgtk3.0 \
+    libnotify4 \
     libnspr4 \
     libnss3 \
     libpango1.0-0 \
@@ -42,6 +43,7 @@ RUN apt-get update -qq; \
     libxrandr2 \
     libxrender1 \
     libxtst6 \
+    libunwind-dev \
     zlib1g \
     debconf \
     npm \
