@@ -27,6 +27,7 @@ RUN apt-get update -qq; \
     libglu1-mesa \
     libgtk2.0-0 \
     libgtk3.0 \
+    libnotify4 \
     libnspr4 \
     libnss3 \
     libpango1.0-0 \
@@ -42,6 +43,7 @@ RUN apt-get update -qq; \
     libxrandr2 \
     libxrender1 \
     libxtst6 \
+    libunwind-dev \
     zlib1g \
     debconf \
     npm \
@@ -70,7 +72,9 @@ RUN wget -nv ${DOWNLOAD_URL} -O UnitySetup && \
     --verbose \
     --download-location=/tmp/unity \
     --components=$COMPONENTS && \
-    # remove setup
-    rm UnitySetup
+    # remove setup & temp files
+    rm UnitySetup && \
+    rm -rf /tmp/unity && \
+    rm -rf /root/.local/share/Trash/*
 
 ADD CACerts.pem /root/.local/share/unity3d/Certificates/
