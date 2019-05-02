@@ -45,6 +45,7 @@ RUN apt-get update -qq; \
     libxtst6 \
     libunwind-dev \
     zlib1g \
+    pulseaudio \
     debconf \
     npm \
     xdg-utils \
