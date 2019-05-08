@@ -1010,12 +1010,22 @@
 #   release_notes: https://unity3d.com/unity/whats-new/2018.3.12
 #   release_url: https://beta.unity3d.com/download/8afd630d1f5b/public_download.html
   
-2019.1.0f2:
+# 2019.1.0f2:
+#   latest: true
+#   version: 2019.1.0
+#   build: f2
+#   underscore: 2019_1_0f2
+#   download_url: https://beta.unity3d.com/download/292b93d75a2c/UnitySetup-2019.1.0f2
+#   sha1: 56711ddafdde2554a7782c846785767e07ebdc5d
+#   release_notes: https://unity3d.com/unity/whats-new/2019.1.0
+#   release_url: https://beta.unity3d.com/download/292b93d75a2c/public_download.html
+  
+2019.1.1f1:
   latest: true
-  version: 2019.1.0
-  build: f2
-  underscore: 2019_1_0f2
-  download_url: https://beta.unity3d.com/download/292b93d75a2c/UnitySetup-2019.1.0f2
-  sha1: 56711ddafdde2554a7782c846785767e07ebdc5d
-  release_notes: https://unity3d.com/unity/whats-new/2019.1.0
-  release_url: https://beta.unity3d.com/download/292b93d75a2c/public_download.html
+  version: 2019.1.1
+  build: f1
+  underscore: 2019_1_1f1
+  download_url: https://beta.unity3d.com/download/fef62e97e63b/UnitySetup-2019.1.1f1
+  sha1: 0d1082e47ea0e6e127ce31e5685b4fc2f2cae6d3
+  release_notes: https://unity3d.com/unity/whats-new/2019.1.1
+  release_url: https://beta.unity3d.com/download/fef62e97e63b/public_download.html
