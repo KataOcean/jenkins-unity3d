@@ -1,6 +1,7 @@
 FROM ubuntu:16.04
 
 ARG DOWNLOAD_URL
+ARG SHA1
 ARG COMPONENTS=Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
 
 RUN apt-get update -qq; \
@@ -59,7 +60,7 @@ RUN apt-get update -qq; \
 RUN wget -nv ${DOWNLOAD_URL} -O UnitySetup && \
     # compare sha1 if given
     if [ -n "${SHA1}" -a "${SHA1}" != "" ]; then \
-     echo "${SHA1}  UnitySetup" | shasum -a 1 --check -; \
+     echo "${SHA1}  UnitySetup" | sha1sum -a 1 --check -; \
     else \
      echo "no sha1 given, skipping checksum"; \
     fi && \

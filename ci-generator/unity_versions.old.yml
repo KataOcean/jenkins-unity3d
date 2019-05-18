@@ -1039,3 +1039,13 @@
   sha1: 64809d740e51a72079f270e636bfee77d38d7ea3
   release_notes: https://unity3d.com/unity/whats-new/2019.1.2
   release_url: https://beta.unity3d.com/download/3e18427e571f/public_download.html
+
+# TODO: fix (UnitySetup:9): Gtk-WARNING **: cannot open display:
+2017.4.27f1:
+  version: 2017.4.27
+  build: f1
+  underscore: 2017_4_27f1
+  download_url: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
+  sha1: 8dae4dd18df383a598830c6e2489cdecdcb19273
+  release_notes: https://unity3d.com/unity/whatsnew/unity-2017.4.2
+  release_url: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html

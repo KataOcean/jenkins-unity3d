@@ -18,6 +18,7 @@ variables:
   IMAGE_ARGUMENTS: >
     --build-arg DOWNLOAD_URL=$DOWNLOAD_URL
     --build-arg COMPONENTS=$COMPONENTS
+    --build-arg SHA1=$SHA1
 
 services:
   - docker:dind
