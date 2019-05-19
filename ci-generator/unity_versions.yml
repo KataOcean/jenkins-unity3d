@@ -12,7 +12,6 @@
 
 # testing the most recent 2017 image with fix for GTK, ref https://gitlab.com/gableroux/unity3d/issues/19
 2017.4.27f1:
-  # Available components: Unity,Documentation,StandardAssets,Example,Android,iOS,Mac,WebGL,Windows,Facebook-Games
   # This version doesn't use Mac-Mono and Windows-Mono so we need to override components
   components:
     base: Unity,Windows,Mac,WebGL
@@ -29,6 +28,11 @@
 
 # testing the actual image that previously failed to build in https://gitlab.com/gableroux/unity3d/issues/19
 2017.3.0b1:
+  # This version doesn't use Mac-Mono and Windows-Mono so we need to override components
+  components:
+    base: Unity,Windows,Mac,WebGL
+    mac: Unity,Mac
+    windows: Unity,Windows
   dockerfile: unitysetup-2017.Dockerfile
   version: 2017.3.0
   build: b1
@@ -66,10 +70,10 @@
   version: 2018.3.14
   build: f1
   underscore: 2018_3_14f1
-  download_url: https://beta.unity3d.com/download/a122f5dc316d/UnitySetup-2018.3.14f1
-  sha1: da39a3ee5e6b4b0d3255bfef95601890afd80709
+  download_url: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
+  sha1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
   release_notes: https://unity3d.com/unity/whats-new/2018.3.14f1
-  release_url: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
+  release_url: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
 
 # Yet another version
 2018.4.0f1:
