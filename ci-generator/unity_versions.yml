@@ -8,13 +8,13 @@
   release_url: https://download.unity3d.com/download_unity/a122f5dc316d/public_download.html
 
 2018.3.14f1:
- version: 2018.3.14
- build: f1
- underscore: 2018_3_14f1
- download_url: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
- sha1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
- release_notes: https://unity3d.com/unity/whats-new/2018.3.14
- release_url: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
+  version: 2018.3.14
+  build: f1
+  underscore: 2018_3_14f1
+  download_url: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
+  sha1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
+  release_notes: https://unity3d.com/unity/whats-new/2018.3.14
+  release_url: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
 
 2019.1.3f1:
   latest: true
