@@ -70,6 +70,9 @@ RUN wget -nv ${DOWNLOAD_URL} -O UnitySetup && \
     fi && \
     # make executable
     chmod +x UnitySetup && \
+    # 2017 difference: must have /tmp/ and /opt/unity/ folders before installation
+    mkdir -p /tmp/unity && \
+    mkdir -p /opt/Unity && \
     # agree with license
     echo y | \
     # install unity with required components
