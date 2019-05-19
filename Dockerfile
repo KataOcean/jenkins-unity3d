@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 
 ARG DOWNLOAD_URL
+ARG SHA1
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
@@ -60,7 +61,7 @@ RUN echo "America/New_York" > /etc/timezone && \
 RUN wget -nv ${DOWNLOAD_URL} -O unity.deb; \
     # compare sha1 if given
     if [ -n "${SHA1}" -a "${SHA1}" != "" ]; then \
-      echo "${SHA1}  unity.deb" | shasum -a 1 --check -; \
+      echo "${SHA1}  unity.deb" | sha1sum --check -; \
     else \
       echo "no sha1 given, skipping checksum"; \
     fi && \
