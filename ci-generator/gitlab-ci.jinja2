@@ -1,7 +1,6 @@
 image: docker:latest
 
 variables:
-  COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
   IMAGE_LABELS: >
     --label vcs-url=$CI_PROJECT_URL
     --label com.gitlab.ci.builder=$GITLAB_USER_EMAIL
@@ -64,6 +63,7 @@ nothing_to_build:
     VERSION: {{version.version}}
     BUILD: {{version.build}}
     TAG: {{version_key}}
+    COMPONENTS: {% if version.components %}{{version.components['base'] | default(base_components)}}{% else %}{{base_components}}{% endif %}
     DOWNLOAD_URL: {{version.download_url}}
     {% if version.sha1 %}SHA1: {{version.sha1}}{% endif %}
     {% if version.release_notes %}RELEASE_NOTES: {{version.release_notes}}{% endif %}
@@ -87,7 +87,7 @@ build-master unity_{{version.underscore}}:
     VERSION: {{version.version}}
     BUILD: {{version.build}}
     TAG: {{version_key}}-{{component_key}}
-    COMPONENTS: {{component}}
+    COMPONENTS: {% if version.components %}{{version.components[component_key] | default(component)}}{% else %}{{component}}{% endif %}
     DOWNLOAD_URL: {{version.download_url}}
     {% if version.sha1 %}SHA1: {{version.sha1}}{% endif %}
     {% if version.release_notes %}RELEASE_NOTES: {{version.release_notes}}{% endif %}
