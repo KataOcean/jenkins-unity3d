@@ -238,7 +238,7 @@ build-master unity_2017_4_27f1-facebook:
     VERSION: 2017.3.0
     BUILD: b1
     TAG: 2017.3.0b1
-    COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
+    COMPONENTS: Unity,Windows,Mac,WebGL
     DOWNLOAD_URL: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
     SHA1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
     RELEASE_NOTES: https://unity3d.com/unity/beta/unity2017.3.0b1
@@ -278,7 +278,7 @@ build-master unity_2017_3_0b1-unity:
     VERSION: 2017.3.0
     BUILD: b1
     TAG: 2017.3.0b1-windows
-    COMPONENTS: Unity,Windows,Windows-Mono
+    COMPONENTS: Unity,Windows
     DOWNLOAD_URL: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
     SHA1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
     RELEASE_NOTES: https://unity3d.com/unity/beta/unity2017.3.0b1
@@ -298,7 +298,7 @@ build-master unity_2017_3_0b1-windows:
     VERSION: 2017.3.0
     BUILD: b1
     TAG: 2017.3.0b1-mac
-    COMPONENTS: Unity,Mac,Mac-Mono
+    COMPONENTS: Unity,Mac
     DOWNLOAD_URL: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
     SHA1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
     RELEASE_NOTES: https://unity3d.com/unity/beta/unity2017.3.0b1
@@ -725,10 +725,10 @@ build-master unity_2018_2_21f1-facebook:
     BUILD: f1
     TAG: 2018.3.14f1
     COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
-    DOWNLOAD_URL: https://beta.unity3d.com/download/a122f5dc316d/UnitySetup-2018.3.14f1
-    SHA1: da39a3ee5e6b4b0d3255bfef95601890afd80709
+    DOWNLOAD_URL: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
+    SHA1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.3.14f1
-    RELEASE_URL: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
+    RELEASE_URL: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
     
 
 build unity_2018_3_14f1:
@@ -745,10 +745,10 @@ build-master unity_2018_3_14f1:
     BUILD: f1
     TAG: 2018.3.14f1-unity
     COMPONENTS: Unity
-    DOWNLOAD_URL: https://beta.unity3d.com/download/a122f5dc316d/UnitySetup-2018.3.14f1
-    SHA1: da39a3ee5e6b4b0d3255bfef95601890afd80709
+    DOWNLOAD_URL: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
+    SHA1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.3.14f1
-    RELEASE_URL: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
+    RELEASE_URL: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
 
 build unity_2018_3_14f1-unity:
   <<: *unity_2018_3_14f1-unity
@@ -765,10 +765,10 @@ build-master unity_2018_3_14f1-unity:
     BUILD: f1
     TAG: 2018.3.14f1-windows
     COMPONENTS: Unity,Windows,Windows-Mono
-    DOWNLOAD_URL: https://beta.unity3d.com/download/a122f5dc316d/UnitySetup-2018.3.14f1
-    SHA1: da39a3ee5e6b4b0d3255bfef95601890afd80709
+    DOWNLOAD_URL: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
+    SHA1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.3.14f1
-    RELEASE_URL: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
+    RELEASE_URL: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
 
 build unity_2018_3_14f1-windows:
   <<: *unity_2018_3_14f1-windows
@@ -785,10 +785,10 @@ build-master unity_2018_3_14f1-windows:
     BUILD: f1
     TAG: 2018.3.14f1-mac
     COMPONENTS: Unity,Mac,Mac-Mono
-    DOWNLOAD_URL: https://beta.unity3d.com/download/a122f5dc316d/UnitySetup-2018.3.14f1
-    SHA1: da39a3ee5e6b4b0d3255bfef95601890afd80709
+    DOWNLOAD_URL: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
+    SHA1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.3.14f1
-    RELEASE_URL: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
+    RELEASE_URL: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
 
 build unity_2018_3_14f1-mac:
   <<: *unity_2018_3_14f1-mac
@@ -805,10 +805,10 @@ build-master unity_2018_3_14f1-mac:
     BUILD: f1
     TAG: 2018.3.14f1-ios
     COMPONENTS: Unity,iOS
-    DOWNLOAD_URL: https://beta.unity3d.com/download/a122f5dc316d/UnitySetup-2018.3.14f1
-    SHA1: da39a3ee5e6b4b0d3255bfef95601890afd80709
+    DOWNLOAD_URL: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
+    SHA1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.3.14f1
-    RELEASE_URL: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
+    RELEASE_URL: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
 
 build unity_2018_3_14f1-ios:
   <<: *unity_2018_3_14f1-ios
@@ -825,10 +825,10 @@ build-master unity_2018_3_14f1-ios:
     BUILD: f1
     TAG: 2018.3.14f1-android
     COMPONENTS: Unity,Android
-    DOWNLOAD_URL: https://beta.unity3d.com/download/a122f5dc316d/UnitySetup-2018.3.14f1
-    SHA1: da39a3ee5e6b4b0d3255bfef95601890afd80709
+    DOWNLOAD_URL: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
+    SHA1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.3.14f1
-    RELEASE_URL: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
+    RELEASE_URL: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
 
 build unity_2018_3_14f1-android:
   <<: *unity_2018_3_14f1-android
@@ -845,10 +845,10 @@ build-master unity_2018_3_14f1-android:
     BUILD: f1
     TAG: 2018.3.14f1-webgl
     COMPONENTS: Unity,WebGL
-    DOWNLOAD_URL: https://beta.unity3d.com/download/a122f5dc316d/UnitySetup-2018.3.14f1
-    SHA1: da39a3ee5e6b4b0d3255bfef95601890afd80709
+    DOWNLOAD_URL: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
+    SHA1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.3.14f1
-    RELEASE_URL: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
+    RELEASE_URL: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
 
 build unity_2018_3_14f1-webgl:
   <<: *unity_2018_3_14f1-webgl
@@ -865,10 +865,10 @@ build-master unity_2018_3_14f1-webgl:
     BUILD: f1
     TAG: 2018.3.14f1-facebook
     COMPONENTS: Unity,Facebook-Games
-    DOWNLOAD_URL: https://beta.unity3d.com/download/a122f5dc316d/UnitySetup-2018.3.14f1
-    SHA1: da39a3ee5e6b4b0d3255bfef95601890afd80709
+    DOWNLOAD_URL: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
+    SHA1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.3.14f1
-    RELEASE_URL: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
+    RELEASE_URL: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
 
 build unity_2018_3_14f1-facebook:
   <<: *unity_2018_3_14f1-facebook
