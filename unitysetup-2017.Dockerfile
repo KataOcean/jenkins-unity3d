@@ -1,13 +1,20 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ARG DOWNLOAD_URL
+ARG SHA1
+ARG COMPONENTS=Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
 
-RUN apt-get update -qq; \
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+
+RUN echo "America/New_York" > /etc/timezone && \
+    apt-get update -qq; \
     apt-get install -qq -y \
     gconf-service \
     lib32gcc1 \
     lib32stdc++6 \
     libasound2 \
+    libarchive13 \
     libc6 \
     libc6-i386 \
     libcairo2 \
@@ -24,16 +31,17 @@ RUN apt-get update -qq; \
     libglib2.0-0 \
     libglu1-mesa \
     libgtk2.0-0 \
+    libgtk3.0 \
     libnotify4 \
     libnspr4 \
     libnss3 \
     libpango1.0-0 \
+    libsoup2.4-1 \
     libstdc++6 \
     libx11-6 \
     libxcomposite1 \
     libxcursor1 \
     libxdamage1 \
-    libgtk-3-0\
     libxext6 \
     libxfixes3 \
     libxi6 \
@@ -53,18 +61,30 @@ RUN apt-get update -qq; \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN wget -nv ${DOWNLOAD_URL} -O unity.deb; \
+RUN wget -nv ${DOWNLOAD_URL} -O UnitySetup && \
     # compare sha1 if given
     if [ -n "${SHA1}" -a "${SHA1}" != "" ]; then \
-      echo "${SHA1}  unity.deb" | shasum -a 1 --check -; \
+      echo "${SHA1}  UnitySetup" | sha1sum --check -; \
     else \
       echo "no sha1 given, skipping checksum"; \
     fi && \
-    # install unity
-    dpkg -i unity.deb && \
-    # remove setup
-    rm unity.deb \
+    # make executable
+    chmod +x UnitySetup && \
+    # 2017 difference: must have /tmp/ and /opt/unity/ folders before installation
+    mkdir -p /tmp/unity && \
+    mkdir -p /opt/Unity && \
+    # agree with license
+    echo y | \
+    # install unity with required components
+    xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+    ./UnitySetup \
+    --unattended \
+    --install-location=/opt/Unity \
+    --verbose \
+    --download-location=/tmp/unity \
+    --components=$COMPONENTS && \
     # remove setup & temp files
+    rm UnitySetup && \
     rm -rf /tmp/unity && \
     rm -rf /root/.local/share/Trash/*
 

@@ -13,7 +13,8 @@ def main():
 def get_rendered_ci_template():
     context = {
         'versions': get_unity_versions() or {},
-        'components': get_unity_components()
+        'components': get_unity_components(),
+        'base_components': get_unity_base_components(),
     }
     return render_template(get_ci_yaml_template(), context)
 
@@ -28,6 +29,10 @@ def get_unity_versions():
     unity_versions = os.path.join(script_dirname, "unity_versions.yml")
     with open(unity_versions, 'r') as f:
         return yaml.load(f.read())
+
+
+def get_unity_base_components():
+    return 'Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL'
 
 
 def get_unity_components():
