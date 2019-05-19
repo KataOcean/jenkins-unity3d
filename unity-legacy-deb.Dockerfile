@@ -29,6 +29,7 @@ RUN echo "America/New_York" > /etc/timezone && \
     libglib2.0-0 \
     libglu1-mesa \
     libgtk2.0-0 \
+    libgtk3.0\
     libnotify4 \
     libnspr4 \
     libnss3 \
@@ -38,7 +39,6 @@ RUN echo "America/New_York" > /etc/timezone && \
     libxcomposite1 \
     libxcursor1 \
     libxdamage1 \
-    libgtk-3-0\
     libxext6 \
     libxfixes3 \
     libxi6 \
@@ -58,7 +58,7 @@ RUN echo "America/New_York" > /etc/timezone && \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN wget -nv ${DOWNLOAD_URL} -O unity.deb; \
+RUN wget -nv ${DOWNLOAD_URL} -O unity.deb && \
     # compare sha1 if given
     if [ -n "${SHA1}" -a "${SHA1}" != "" ]; then \
       echo "${SHA1}  unity.deb" | sha1sum --check -; \
@@ -67,9 +67,8 @@ RUN wget -nv ${DOWNLOAD_URL} -O unity.deb; \
     fi && \
     # install unity
     dpkg -i unity.deb && \
-    # remove setup
-    rm unity.deb \
     # remove setup & temp files
+    rm unity.deb \
     rm -rf /tmp/unity && \
     rm -rf /root/.local/share/Trash/*
 
