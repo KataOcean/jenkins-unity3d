@@ -29,25 +29,7 @@ before_script:
 .build-master: &build-master
   stage: build
   script:
-    - docker build $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG" .
-    - docker push "$CI_REGISTRY_IMAGE:$TAG"
-  retry: 2
-  only:
-    - master
-
-.build: &build
-  stage: build
-  script:
-    - docker build $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG-$CI_COMMIT_REF_SLUG" .
-    - docker push "$CI_REGISTRY_IMAGE:$TAG-$CI_COMMIT_REF_SLUG"
-  retry: 2
-  except:
-    - master
-
-.build-unitysetup-master: &build-unitysetup-master
-  stage: build
-  script:
-    - docker build -f unitysetup.Dockerfile $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG" .
+    - docker build -f $DOCKERFILE $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG" .
     - docker push "$CI_REGISTRY_IMAGE:$TAG"
     - |
       if [ -n "$LATEST" ]; then
@@ -59,10 +41,10 @@ before_script:
   only:
     - master
 
-.build-unitysetup: &build-unitysetup
+.build: &build
   stage: build
   script:
-    - docker build -f unitysetup.Dockerfile $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG-$CI_COMMIT_REF_SLUG" .
+    - docker build -f $DOCKERFILE $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG-$CI_COMMIT_REF_SLUG" .
     - docker push "$CI_REGISTRY_IMAGE:$TAG-$CI_COMMIT_REF_SLUG"
   retry: 2
   except:
@@ -78,6 +60,7 @@ nothing_to_build:
 {#- main build #}
 .unity_{{version.underscore}}: &unity_{{version.underscore}}
   variables:
+    DOCKERFILE: {% if version.dockerfile %}{{version.dockerfile}}{% else %}Dockerfile{% endif %}
     VERSION: {{version.version}}
     BUILD: {{version.build}}
     TAG: {{version_key}}
@@ -89,21 +72,18 @@ nothing_to_build:
 
 build unity_{{version.underscore}}:
   <<: *unity_{{version.underscore}}
-  <<: *build-unitysetup
+  <<: *build
 
 build-master unity_{{version.underscore}}:
   <<: *unity_{{version.underscore}}
-  {%- if version.legacy %}
   <<: *build-master
-  {% else %}
-  <<: *build-unitysetup-master
-  {% endif %}
 
 {#- component specific #}
 {%- if not version.legacy %}
 {%- for component_key, component in components.items() %}
-.unity_{{version.underscore}}-unity: &unity_{{version.underscore}}-{{component_key}}
+.unity_{{version.underscore}}-{{component_key}}: &unity_{{version.underscore}}-{{component_key}}
   variables:
+    DOCKERFILE: {% if version.dockerfile %}{{version.dockerfile}}{% else %}Dockerfile{% endif %}
     VERSION: {{version.version}}
     BUILD: {{version.build}}
     TAG: {{version_key}}-{{component_key}}
@@ -115,11 +95,11 @@ build-master unity_{{version.underscore}}:
 
 build unity_{{version.underscore}}-{{component_key}}:
   <<: *unity_{{version.underscore}}-{{component_key}}
-  <<: *build-unitysetup
+  <<: *build
 
 build-master unity_{{version.underscore}}-{{component_key}}:
   <<: *unity_{{version.underscore}}-{{component_key}}
-  <<: *build-unitysetup-master
+  <<: *build-master
 {% endfor %}
 {% endif %}
 {% endfor %}
