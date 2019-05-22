@@ -95,13 +95,31 @@ class TestGitlabCiGenerator(TestCase):
         with self.subTest("unitysetup_2019"):
             ci_generator = GitlabCiGenerator()
             version_input = 'data/test_unitysetup_2019.yml'
-            version_output = 'data/test_unitysetup_2019.out'
+            version_output = 'data/test_unitysetup_2019.out.yml'
             self.do_test_snapshot(ci_generator, version_input, version_output)
 
         with self.subTest("dockerfile_override"):
             ci_generator = GitlabCiGenerator()
             version_input = 'data/test_dockerfile_override.yml'
-            version_output = 'data/test_dockerfile_override.out'
+            version_output = 'data/test_dockerfile_override.out.yml'
+            self.do_test_snapshot(ci_generator, version_input, version_output)
+
+        with self.subTest("base_components_override"):
+            ci_generator = GitlabCiGenerator()
+            version_input = 'data/test_base_components_override.yml'
+            version_output = 'data/test_base_components_override.out.yml'
+            self.do_test_snapshot(ci_generator, version_input, version_output)
+
+        with self.subTest("unitysetup_2017"):
+            ci_generator = GitlabCiGenerator()
+            version_input = 'data/test_unitysetup_2017.yml'
+            version_output = 'data/test_unitysetup_2017.out.yml'
+            self.do_test_snapshot(ci_generator, version_input, version_output)
+
+        with self.subTest("unitysetup_2017_legacy"):
+            ci_generator = GitlabCiGenerator()
+            version_input = 'data/test_unitysetup_2017_legacy.yml'
+            version_output = 'data/test_unitysetup_2017_legacy.out.yml'
             self.do_test_snapshot(ci_generator, version_input, version_output)
 
     def do_test_snapshot(self, ci_generator, version_input, version_output):

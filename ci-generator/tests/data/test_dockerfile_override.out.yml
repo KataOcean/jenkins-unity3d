@@ -50,9 +50,10 @@ before_script:
   except:
     - master
 
+# main build for 2019.1.3f1
 .unity_2019_1_3f1: &unity_2019_1_3f1
   variables:
-    DOCKERFILE_NAME: unitysetup
+    DOCKERFILE_NAME: custom_value_here
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1
@@ -71,9 +72,10 @@ build-master unity_2019_1_3f1:
   <<: *unity_2019_1_3f1
   <<: *build-master
 
+# platform specific for 2019.1.3f1: unity
 .unity_2019_1_3f1-unity: &unity_2019_1_3f1-unity
   variables:
-    DOCKERFILE_NAME: unitysetup
+    DOCKERFILE_NAME: custom_value_here
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-unity
@@ -91,9 +93,10 @@ build-master unity_2019_1_3f1-unity:
   <<: *unity_2019_1_3f1-unity
   <<: *build-master
 
+# platform specific for 2019.1.3f1: windows
 .unity_2019_1_3f1-windows: &unity_2019_1_3f1-windows
   variables:
-    DOCKERFILE_NAME: unitysetup
+    DOCKERFILE_NAME: custom_value_here
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-windows
@@ -111,9 +114,10 @@ build-master unity_2019_1_3f1-windows:
   <<: *unity_2019_1_3f1-windows
   <<: *build-master
 
+# platform specific for 2019.1.3f1: mac
 .unity_2019_1_3f1-mac: &unity_2019_1_3f1-mac
   variables:
-    DOCKERFILE_NAME: unitysetup
+    DOCKERFILE_NAME: custom_value_here
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-mac
@@ -131,9 +135,10 @@ build-master unity_2019_1_3f1-mac:
   <<: *unity_2019_1_3f1-mac
   <<: *build-master
 
+# platform specific for 2019.1.3f1: ios
 .unity_2019_1_3f1-ios: &unity_2019_1_3f1-ios
   variables:
-    DOCKERFILE_NAME: unitysetup
+    DOCKERFILE_NAME: custom_value_here
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-ios
@@ -151,9 +156,10 @@ build-master unity_2019_1_3f1-ios:
   <<: *unity_2019_1_3f1-ios
   <<: *build-master
 
+# platform specific for 2019.1.3f1: android
 .unity_2019_1_3f1-android: &unity_2019_1_3f1-android
   variables:
-    DOCKERFILE_NAME: unitysetup-android
+    DOCKERFILE_NAME: custom_value_here
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-android
@@ -171,9 +177,10 @@ build-master unity_2019_1_3f1-android:
   <<: *unity_2019_1_3f1-android
   <<: *build-master
 
+# platform specific for 2019.1.3f1: webgl
 .unity_2019_1_3f1-webgl: &unity_2019_1_3f1-webgl
   variables:
-    DOCKERFILE_NAME: unitysetup
+    DOCKERFILE_NAME: custom_value_here
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-webgl
@@ -191,9 +198,10 @@ build-master unity_2019_1_3f1-webgl:
   <<: *unity_2019_1_3f1-webgl
   <<: *build-master
 
+# platform specific for 2019.1.3f1: facebook
 .unity_2019_1_3f1-facebook: &unity_2019_1_3f1-facebook
   variables:
-    DOCKERFILE_NAME: unitysetup
+    DOCKERFILE_NAME: custom_value_here
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-facebook

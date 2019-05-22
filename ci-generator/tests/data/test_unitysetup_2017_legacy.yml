@@ -1,0 +1,11 @@
+# testing a legacy image
+2017.2.1f1:
+  legacy: true
+  dockerfile: unity-legacy-deb
+  version: 2017.2.1
+  build: f1
+  underscore: 2017_2_1f1
+  download_url: https://beta.unity3d.com/download/ce9f6a0436e1+/unity-editor_amd64-2017.2.1f1.deb
+  sha1: af4301f17ec256095d133091f6a37a3cc74ce7da
+  release_notes: https://unity3d.com/unity/whatsnew/unity-2017.2.1
+  release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues350256/page-2#post-3386889

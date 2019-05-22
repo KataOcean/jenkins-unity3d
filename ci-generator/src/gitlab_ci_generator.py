@@ -35,11 +35,18 @@ class GitlabCiGenerator(object):
     def get_versions_with_platforms(self, unity_versions):
         unity_versions_with_platforms = {}
         for version_key, version in unity_versions.items():
-            if 'legacy' not in version or ('legacy' in version and not version.legacy):
+            if version.get('legacy', False):
+                unity_versions_with_platforms[version_key] = unity_versions[version_key]
+            else:
+                platforms = {
+                    **self.get_unity_platforms(),
+                    **unity_versions[version_key].get('platforms', {}),
+                }
+                base_components = unity_versions[version_key].get('base_components', self.get_unity_base_components())
                 unity_versions_with_platforms[version_key] = {
-                    "platforms": {**self.get_unity_platforms()},
-                    "base_components": self.get_unity_base_components(),
                     **unity_versions[version_key],
+                    "platforms": platforms,
+                    "base_components": base_components,
                 }
         return unity_versions_with_platforms
 

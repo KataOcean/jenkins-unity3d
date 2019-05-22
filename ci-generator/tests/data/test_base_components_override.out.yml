@@ -50,13 +50,14 @@ before_script:
   except:
     - master
 
+# main build for 2019.1.3f1
 .unity_2019_1_3f1: &unity_2019_1_3f1
   variables:
-    DOCKERFILE_NAME: example
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1
-    COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
+    COMPONENTS: custom_value_here
     DOWNLOAD_URL: https://beta.unity3d.com/download/dc414eb9ed43/UnitySetup-2019.1.3f1
     SHA1: ea97ef4c42180bd833e5b31b56f083b727a99cc8
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.3f1
@@ -71,9 +72,10 @@ build-master unity_2019_1_3f1:
   <<: *unity_2019_1_3f1
   <<: *build-master
 
+# platform specific for 2019.1.3f1: unity
 .unity_2019_1_3f1-unity: &unity_2019_1_3f1-unity
   variables:
-    DOCKERFILE_NAME: example
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-unity
@@ -91,9 +93,10 @@ build-master unity_2019_1_3f1-unity:
   <<: *unity_2019_1_3f1-unity
   <<: *build-master
 
+# platform specific for 2019.1.3f1: windows
 .unity_2019_1_3f1-windows: &unity_2019_1_3f1-windows
   variables:
-    DOCKERFILE_NAME: example
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-windows
@@ -111,9 +114,10 @@ build-master unity_2019_1_3f1-windows:
   <<: *unity_2019_1_3f1-windows
   <<: *build-master
 
+# platform specific for 2019.1.3f1: mac
 .unity_2019_1_3f1-mac: &unity_2019_1_3f1-mac
   variables:
-    DOCKERFILE_NAME: example
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-mac
@@ -131,9 +135,10 @@ build-master unity_2019_1_3f1-mac:
   <<: *unity_2019_1_3f1-mac
   <<: *build-master
 
+# platform specific for 2019.1.3f1: ios
 .unity_2019_1_3f1-ios: &unity_2019_1_3f1-ios
   variables:
-    DOCKERFILE_NAME: example
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-ios
@@ -151,9 +156,10 @@ build-master unity_2019_1_3f1-ios:
   <<: *unity_2019_1_3f1-ios
   <<: *build-master
 
+# platform specific for 2019.1.3f1: android
 .unity_2019_1_3f1-android: &unity_2019_1_3f1-android
   variables:
-    DOCKERFILE_NAME: example
+    DOCKERFILE_NAME: unitysetup-android
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-android
@@ -171,9 +177,10 @@ build-master unity_2019_1_3f1-android:
   <<: *unity_2019_1_3f1-android
   <<: *build-master
 
+# platform specific for 2019.1.3f1: webgl
 .unity_2019_1_3f1-webgl: &unity_2019_1_3f1-webgl
   variables:
-    DOCKERFILE_NAME: example
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-webgl
@@ -191,9 +198,10 @@ build-master unity_2019_1_3f1-webgl:
   <<: *unity_2019_1_3f1-webgl
   <<: *build-master
 
+# platform specific for 2019.1.3f1: facebook
 .unity_2019_1_3f1-facebook: &unity_2019_1_3f1-facebook
   variables:
-    DOCKERFILE_NAME: example
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-facebook

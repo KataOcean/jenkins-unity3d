@@ -50,6 +50,7 @@ before_script:
   except:
     - master
 
+# main build for 2018.2.21f1
 .unity_2018_2_21f1: &unity_2018_2_21f1
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -71,6 +72,7 @@ build-master unity_2018_2_21f1:
   <<: *unity_2018_2_21f1
   <<: *build-master
 
+# platform specific for 2018.2.21f1: unity
 .unity_2018_2_21f1-unity: &unity_2018_2_21f1-unity
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -91,6 +93,7 @@ build-master unity_2018_2_21f1-unity:
   <<: *unity_2018_2_21f1-unity
   <<: *build-master
 
+# platform specific for 2018.2.21f1: windows
 .unity_2018_2_21f1-windows: &unity_2018_2_21f1-windows
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -111,6 +114,7 @@ build-master unity_2018_2_21f1-windows:
   <<: *unity_2018_2_21f1-windows
   <<: *build-master
 
+# platform specific for 2018.2.21f1: mac
 .unity_2018_2_21f1-mac: &unity_2018_2_21f1-mac
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -131,6 +135,7 @@ build-master unity_2018_2_21f1-mac:
   <<: *unity_2018_2_21f1-mac
   <<: *build-master
 
+# platform specific for 2018.2.21f1: ios
 .unity_2018_2_21f1-ios: &unity_2018_2_21f1-ios
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -151,6 +156,7 @@ build-master unity_2018_2_21f1-ios:
   <<: *unity_2018_2_21f1-ios
   <<: *build-master
 
+# platform specific for 2018.2.21f1: android
 .unity_2018_2_21f1-android: &unity_2018_2_21f1-android
   variables:
     DOCKERFILE_NAME: unitysetup-android
@@ -171,6 +177,7 @@ build-master unity_2018_2_21f1-android:
   <<: *unity_2018_2_21f1-android
   <<: *build-master
 
+# platform specific for 2018.2.21f1: webgl
 .unity_2018_2_21f1-webgl: &unity_2018_2_21f1-webgl
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -191,6 +198,7 @@ build-master unity_2018_2_21f1-webgl:
   <<: *unity_2018_2_21f1-webgl
   <<: *build-master
 
+# platform specific for 2018.2.21f1: facebook
 .unity_2018_2_21f1-facebook: &unity_2018_2_21f1-facebook
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -213,6 +221,7 @@ build-master unity_2018_2_21f1-facebook:
 
 
 
+# main build for 2018.3.14f1
 .unity_2018_3_14f1: &unity_2018_3_14f1
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -234,6 +243,7 @@ build-master unity_2018_3_14f1:
   <<: *unity_2018_3_14f1
   <<: *build-master
 
+# platform specific for 2018.3.14f1: unity
 .unity_2018_3_14f1-unity: &unity_2018_3_14f1-unity
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -254,6 +264,7 @@ build-master unity_2018_3_14f1-unity:
   <<: *unity_2018_3_14f1-unity
   <<: *build-master
 
+# platform specific for 2018.3.14f1: windows
 .unity_2018_3_14f1-windows: &unity_2018_3_14f1-windows
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -274,6 +285,7 @@ build-master unity_2018_3_14f1-windows:
   <<: *unity_2018_3_14f1-windows
   <<: *build-master
 
+# platform specific for 2018.3.14f1: mac
 .unity_2018_3_14f1-mac: &unity_2018_3_14f1-mac
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -294,6 +306,7 @@ build-master unity_2018_3_14f1-mac:
   <<: *unity_2018_3_14f1-mac
   <<: *build-master
 
+# platform specific for 2018.3.14f1: ios
 .unity_2018_3_14f1-ios: &unity_2018_3_14f1-ios
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -314,6 +327,7 @@ build-master unity_2018_3_14f1-ios:
   <<: *unity_2018_3_14f1-ios
   <<: *build-master
 
+# platform specific for 2018.3.14f1: android
 .unity_2018_3_14f1-android: &unity_2018_3_14f1-android
   variables:
     DOCKERFILE_NAME: unitysetup-android
@@ -334,6 +348,7 @@ build-master unity_2018_3_14f1-android:
   <<: *unity_2018_3_14f1-android
   <<: *build-master
 
+# platform specific for 2018.3.14f1: webgl
 .unity_2018_3_14f1-webgl: &unity_2018_3_14f1-webgl
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -354,6 +369,7 @@ build-master unity_2018_3_14f1-webgl:
   <<: *unity_2018_3_14f1-webgl
   <<: *build-master
 
+# platform specific for 2018.3.14f1: facebook
 .unity_2018_3_14f1-facebook: &unity_2018_3_14f1-facebook
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -376,6 +392,7 @@ build-master unity_2018_3_14f1-facebook:
 
 
 
+# main build for 2018.4.0f1
 .unity_2018_4_0f1: &unity_2018_4_0f1
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -397,6 +414,7 @@ build-master unity_2018_4_0f1:
   <<: *unity_2018_4_0f1
   <<: *build-master
 
+# platform specific for 2018.4.0f1: unity
 .unity_2018_4_0f1-unity: &unity_2018_4_0f1-unity
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -417,6 +435,7 @@ build-master unity_2018_4_0f1-unity:
   <<: *unity_2018_4_0f1-unity
   <<: *build-master
 
+# platform specific for 2018.4.0f1: windows
 .unity_2018_4_0f1-windows: &unity_2018_4_0f1-windows
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -437,6 +456,7 @@ build-master unity_2018_4_0f1-windows:
   <<: *unity_2018_4_0f1-windows
   <<: *build-master
 
+# platform specific for 2018.4.0f1: mac
 .unity_2018_4_0f1-mac: &unity_2018_4_0f1-mac
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -457,6 +477,7 @@ build-master unity_2018_4_0f1-mac:
   <<: *unity_2018_4_0f1-mac
   <<: *build-master
 
+# platform specific for 2018.4.0f1: ios
 .unity_2018_4_0f1-ios: &unity_2018_4_0f1-ios
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -477,6 +498,7 @@ build-master unity_2018_4_0f1-ios:
   <<: *unity_2018_4_0f1-ios
   <<: *build-master
 
+# platform specific for 2018.4.0f1: android
 .unity_2018_4_0f1-android: &unity_2018_4_0f1-android
   variables:
     DOCKERFILE_NAME: unitysetup-android
@@ -497,6 +519,7 @@ build-master unity_2018_4_0f1-android:
   <<: *unity_2018_4_0f1-android
   <<: *build-master
 
+# platform specific for 2018.4.0f1: webgl
 .unity_2018_4_0f1-webgl: &unity_2018_4_0f1-webgl
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -517,6 +540,7 @@ build-master unity_2018_4_0f1-webgl:
   <<: *unity_2018_4_0f1-webgl
   <<: *build-master
 
+# platform specific for 2018.4.0f1: facebook
 .unity_2018_4_0f1-facebook: &unity_2018_4_0f1-facebook
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -539,6 +563,7 @@ build-master unity_2018_4_0f1-facebook:
 
 
 
+# main build for 2019.1.3f1
 .unity_2019_1_3f1: &unity_2019_1_3f1
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -560,6 +585,7 @@ build-master unity_2019_1_3f1:
   <<: *unity_2019_1_3f1
   <<: *build-master
 
+# platform specific for 2019.1.3f1: unity
 .unity_2019_1_3f1-unity: &unity_2019_1_3f1-unity
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -580,6 +606,7 @@ build-master unity_2019_1_3f1-unity:
   <<: *unity_2019_1_3f1-unity
   <<: *build-master
 
+# platform specific for 2019.1.3f1: windows
 .unity_2019_1_3f1-windows: &unity_2019_1_3f1-windows
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -600,6 +627,7 @@ build-master unity_2019_1_3f1-windows:
   <<: *unity_2019_1_3f1-windows
   <<: *build-master
 
+# platform specific for 2019.1.3f1: mac
 .unity_2019_1_3f1-mac: &unity_2019_1_3f1-mac
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -620,6 +648,7 @@ build-master unity_2019_1_3f1-mac:
   <<: *unity_2019_1_3f1-mac
   <<: *build-master
 
+# platform specific for 2019.1.3f1: ios
 .unity_2019_1_3f1-ios: &unity_2019_1_3f1-ios
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -640,6 +669,7 @@ build-master unity_2019_1_3f1-ios:
   <<: *unity_2019_1_3f1-ios
   <<: *build-master
 
+# platform specific for 2019.1.3f1: android
 .unity_2019_1_3f1-android: &unity_2019_1_3f1-android
   variables:
     DOCKERFILE_NAME: unitysetup-android
@@ -660,6 +690,7 @@ build-master unity_2019_1_3f1-android:
   <<: *unity_2019_1_3f1-android
   <<: *build-master
 
+# platform specific for 2019.1.3f1: webgl
 .unity_2019_1_3f1-webgl: &unity_2019_1_3f1-webgl
   variables:
     DOCKERFILE_NAME: unitysetup
@@ -680,6 +711,7 @@ build-master unity_2019_1_3f1-webgl:
   <<: *unity_2019_1_3f1-webgl
   <<: *build-master
 
+# platform specific for 2019.1.3f1: facebook
 .unity_2019_1_3f1-facebook: &unity_2019_1_3f1-facebook
   variables:
     DOCKERFILE_NAME: unitysetup
