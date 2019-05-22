@@ -1,3 +1,18 @@
+2017.4.27f1:
+  platforms:
+    mac:
+      components: Unity,Mac
+    windows:
+      components: Unity,Windows
+  dockerfile_name: unitysetup_2017
+  version: 2017.4.27
+  build: f1
+  underscore: 2017_4_27f1
+  download_url: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
+  sha1: 8dae4dd18df383a598830c6e2489cdecdcb19273
+  release_notes: https://unity3d.com/unity/whatsnew/unity-2017.4.2
+  release_url: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
+
 2018.2.21f1:
   dockerfile_name: unitysetup
   version: 2018.2.21

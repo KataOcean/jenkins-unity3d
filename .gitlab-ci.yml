@@ -50,6 +50,176 @@ before_script:
   except:
     - master
 
+# main build for 2017.4.27f1
+.unity_2017_4_27f1: &unity_2017_4_27f1
+  variables:
+    DOCKERFILE_NAME: unitysetup_2017
+    VERSION: 2017.4.27
+    BUILD: f1
+    TAG: 2017.4.27f1
+    COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
+    DOWNLOAD_URL: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
+    SHA1: 8dae4dd18df383a598830c6e2489cdecdcb19273
+    RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.4.2
+    RELEASE_URL: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
+
+build unity_2017_4_27f1:
+  <<: *unity_2017_4_27f1
+  <<: *build
+
+build-master unity_2017_4_27f1:
+  <<: *unity_2017_4_27f1
+  <<: *build-master
+
+# platform specific for 2017.4.27f1: unity
+.unity_2017_4_27f1-unity: &unity_2017_4_27f1-unity
+  variables:
+    DOCKERFILE_NAME: unitysetup_2017
+    VERSION: 2017.4.27
+    BUILD: f1
+    TAG: 2017.4.27f1-unity
+    COMPONENTS: Unity
+    DOWNLOAD_URL: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
+    SHA1: 8dae4dd18df383a598830c6e2489cdecdcb19273
+    RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.4.2
+    RELEASE_URL: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
+
+build unity_2017_4_27f1-unity:
+  <<: *unity_2017_4_27f1-unity
+  <<: *build
+
+build-master unity_2017_4_27f1-unity:
+  <<: *unity_2017_4_27f1-unity
+  <<: *build-master
+
+# platform specific for 2017.4.27f1: windows
+.unity_2017_4_27f1-windows: &unity_2017_4_27f1-windows
+  variables:
+    DOCKERFILE_NAME: unitysetup_2017
+    VERSION: 2017.4.27
+    BUILD: f1
+    TAG: 2017.4.27f1-windows
+    COMPONENTS: Unity,Windows
+    DOWNLOAD_URL: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
+    SHA1: 8dae4dd18df383a598830c6e2489cdecdcb19273
+    RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.4.2
+    RELEASE_URL: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
+
+build unity_2017_4_27f1-windows:
+  <<: *unity_2017_4_27f1-windows
+  <<: *build
+
+build-master unity_2017_4_27f1-windows:
+  <<: *unity_2017_4_27f1-windows
+  <<: *build-master
+
+# platform specific for 2017.4.27f1: mac
+.unity_2017_4_27f1-mac: &unity_2017_4_27f1-mac
+  variables:
+    DOCKERFILE_NAME: unitysetup_2017
+    VERSION: 2017.4.27
+    BUILD: f1
+    TAG: 2017.4.27f1-mac
+    COMPONENTS: Unity,Mac
+    DOWNLOAD_URL: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
+    SHA1: 8dae4dd18df383a598830c6e2489cdecdcb19273
+    RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.4.2
+    RELEASE_URL: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
+
+build unity_2017_4_27f1-mac:
+  <<: *unity_2017_4_27f1-mac
+  <<: *build
+
+build-master unity_2017_4_27f1-mac:
+  <<: *unity_2017_4_27f1-mac
+  <<: *build-master
+
+# platform specific for 2017.4.27f1: ios
+.unity_2017_4_27f1-ios: &unity_2017_4_27f1-ios
+  variables:
+    DOCKERFILE_NAME: unitysetup_2017
+    VERSION: 2017.4.27
+    BUILD: f1
+    TAG: 2017.4.27f1-ios
+    COMPONENTS: Unity,iOS
+    DOWNLOAD_URL: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
+    SHA1: 8dae4dd18df383a598830c6e2489cdecdcb19273
+    RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.4.2
+    RELEASE_URL: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
+
+build unity_2017_4_27f1-ios:
+  <<: *unity_2017_4_27f1-ios
+  <<: *build
+
+build-master unity_2017_4_27f1-ios:
+  <<: *unity_2017_4_27f1-ios
+  <<: *build-master
+
+# platform specific for 2017.4.27f1: android
+.unity_2017_4_27f1-android: &unity_2017_4_27f1-android
+  variables:
+    DOCKERFILE_NAME: unitysetup_2017-android
+    VERSION: 2017.4.27
+    BUILD: f1
+    TAG: 2017.4.27f1-android
+    COMPONENTS: Unity,Android
+    DOWNLOAD_URL: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
+    SHA1: 8dae4dd18df383a598830c6e2489cdecdcb19273
+    RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.4.2
+    RELEASE_URL: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
+
+build unity_2017_4_27f1-android:
+  <<: *unity_2017_4_27f1-android
+  <<: *build
+
+build-master unity_2017_4_27f1-android:
+  <<: *unity_2017_4_27f1-android
+  <<: *build-master
+
+# platform specific for 2017.4.27f1: webgl
+.unity_2017_4_27f1-webgl: &unity_2017_4_27f1-webgl
+  variables:
+    DOCKERFILE_NAME: unitysetup_2017
+    VERSION: 2017.4.27
+    BUILD: f1
+    TAG: 2017.4.27f1-webgl
+    COMPONENTS: Unity,WebGL
+    DOWNLOAD_URL: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
+    SHA1: 8dae4dd18df383a598830c6e2489cdecdcb19273
+    RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.4.2
+    RELEASE_URL: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
+
+build unity_2017_4_27f1-webgl:
+  <<: *unity_2017_4_27f1-webgl
+  <<: *build
+
+build-master unity_2017_4_27f1-webgl:
+  <<: *unity_2017_4_27f1-webgl
+  <<: *build-master
+
+# platform specific for 2017.4.27f1: facebook
+.unity_2017_4_27f1-facebook: &unity_2017_4_27f1-facebook
+  variables:
+    DOCKERFILE_NAME: unitysetup_2017
+    VERSION: 2017.4.27
+    BUILD: f1
+    TAG: 2017.4.27f1-facebook
+    COMPONENTS: Unity,Facebook-Games
+    DOWNLOAD_URL: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
+    SHA1: 8dae4dd18df383a598830c6e2489cdecdcb19273
+    RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.4.2
+    RELEASE_URL: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
+
+build unity_2017_4_27f1-facebook:
+  <<: *unity_2017_4_27f1-facebook
+  <<: *build
+
+build-master unity_2017_4_27f1-facebook:
+  <<: *unity_2017_4_27f1-facebook
+  <<: *build-master
+
+
+
 # main build for 2018.2.21f1
 .unity_2018_2_21f1: &unity_2018_2_21f1
   variables:

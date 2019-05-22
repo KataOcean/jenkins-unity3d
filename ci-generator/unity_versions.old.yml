@@ -1,6 +1,6 @@
 5.1.0f3-2015090301:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.1.0
   build: f3
   underscore: 5_1_0f3_2015090301
@@ -11,7 +11,7 @@
 
 5.1.0f3:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.1.0
   build: f3
   underscore: 5_1_0f3
@@ -22,7 +22,7 @@
 
 5.2.2f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.2.2
   build: f1
   underscore: 5_2_2f1
@@ -33,7 +33,7 @@
 
 5.3.0f4:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.3.0
   build: f4
   underscore: 5_3_0f4
@@ -44,7 +44,7 @@
 
 5.3.1f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.3.1
   build: f1
   underscore: 5_3_1f1
@@ -55,7 +55,7 @@
 
 5.3.2f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.3.2
   build: f1
   underscore: 5_3_2f1
@@ -66,7 +66,7 @@
 
 5.3.3f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.3.3
   build: f1
   underscore: 5_3_3f1
@@ -77,7 +77,7 @@
 
 5.4.0b10-20160316:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.0
   build: b10
   underscore: 5_4_0b10_20160316
@@ -88,7 +88,7 @@
 
 5.3.4f1-20160316:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.3.4
   build: f1
   underscore: 5_3_4f1_20160316
@@ -99,7 +99,7 @@
 
 5.4.0b10:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.0b
   build: b10
   underscore: 5_4_0b10
@@ -110,7 +110,7 @@
 
 5.3.4f1-20160317:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.3.4
   build: f1
   underscore: 5_3_4f1_20160317
@@ -121,7 +121,7 @@
 
 5.4.0b13:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.0
   build: b13
   underscore: 5_4_0b13
@@ -132,7 +132,7 @@
 
 5.4.0b15:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.0
   build: b15
   underscore: 5_4_0b15
@@ -143,7 +143,7 @@
 
 5.4.0b16:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.0
   build: b16
   underscore: 5_4_0b16
@@ -154,7 +154,7 @@
 
 5.3.4f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.3.4
   build: f1
   underscore: 5_3_4f1
@@ -165,7 +165,7 @@
 
 5.4.0b18:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.0
   build: b18
   underscore: 5_4_0b18
@@ -176,7 +176,7 @@
 
 5.3.5f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.3.5
   build: f1
   underscore: 5_3_5f1
@@ -187,7 +187,7 @@
 
 5.4.0b21:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.0
   build: b21
   underscore: 5_4_0b21
@@ -198,7 +198,7 @@
 
 5.4.0b23:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.0
   build: b23
   underscore: 5_4_0b23
@@ -209,7 +209,7 @@
 
 5.4.0rc1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.0
   build: rc1
   underscore: 5_4_0rc1
@@ -220,7 +220,7 @@
 
 5.3.6f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.3.6
   build: f1
   underscore: 5_3_6f1
@@ -231,7 +231,7 @@
 
 5.4.0f3:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.0
   build: f3
   underscore: 5_4_0f3
@@ -242,7 +242,7 @@
 
 5.4.0p1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.0
   build: p1
   underscore: 5_4_0p1
@@ -253,7 +253,7 @@
 
 5.5.0b1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.5.0
   build: b1
   underscore: 5_5_0b1
@@ -264,7 +264,7 @@
 
 5.5.0b2:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.5.0
   build: b2
   underscore: 5_5_0b2
@@ -275,7 +275,7 @@
 
 5.4.1f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.1
   build: f1
   underscore: 5_4_1f1
@@ -286,7 +286,7 @@
 
 5.5.0b5:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.5.0
   build: b5
   underscore: 5_5_0b5
@@ -297,7 +297,7 @@
 
 5.4.2f2:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.2
   build: f2
   underscore: 5_4_2f2
@@ -308,7 +308,7 @@
 
 5.4.3f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.4.3
   build: f1
   underscore: 5_4_3f1
@@ -319,7 +319,7 @@
 
 5.5.0f3:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.5.0
   build: f3
   underscore: 5_5_0f3
@@ -330,7 +330,7 @@
 
 5.6.0b1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.6.0
   build: b1
   underscore: 5_6_0b1
@@ -341,7 +341,7 @@
 
 5.5.0p1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.5.0
   build: p1
   underscore: 5_5_0p1
@@ -352,7 +352,7 @@
 
 5.6.0b3:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.6.0
   build: b3
   underscore: 5_6_0b3
@@ -363,7 +363,7 @@
 
 5.5.1f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.5.1
   build: f1
   underscore: 5_5_1f1
@@ -374,7 +374,7 @@
 
 5.6.0b6:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.6.0
   build: b6
   underscore: 5_6_0b6
@@ -385,7 +385,7 @@
 
 5.6.0b8:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.6.0
   build: b8
   underscore: 5_6_0b8
@@ -396,7 +396,7 @@
 
 5.5.2f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.5.2
   build: f1
   underscore: 5_5_2f1
@@ -407,7 +407,7 @@
 
 5.6.0b10:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.6.0
   build: b10
   underscore: 5_6_0b10
@@ -418,7 +418,7 @@
 
 5.6.0f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.6.0
   build: f1
   underscore: 5_6_0f1
@@ -429,7 +429,7 @@
 
 5.6.0f3:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.6.0
   build: f3
   underscore: 5_6_0f3
@@ -440,7 +440,7 @@
 
 5.5.3f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.5.3
   build: f1
   underscore: 5_5_3f1
@@ -451,7 +451,7 @@
 
 2017.1.0b3:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.1.0
   build: b3
   underscore: 2017_1_0b3
@@ -462,7 +462,7 @@
 
 5.6.1f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.6.1
   build: f1
   underscore: 5_6_1f1
@@ -473,7 +473,7 @@
 
 2017.1.0b8:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.1.0
   build: b8
   underscore: 2017_1_0b8
@@ -484,7 +484,7 @@
 
 5.6.2f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.6.2
   build: f1
   underscore: 5_6_2f1
@@ -495,7 +495,7 @@
 
 2017.1.0f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.1.0
   build: f1
   underscore: 2017_1_0f1
@@ -506,7 +506,7 @@
 
 2017.2.0b2:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.2.0
   build: b2
   underscore: 2017_2_0b2
@@ -517,7 +517,7 @@
 
 2017.1.0f3:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.1.0
   build: f3
   underscore: 2017_1_0f3
@@ -528,7 +528,7 @@
 
 5.6.3f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 5.6.3
   build: f1
   underscore: 5_6_3f1
@@ -539,7 +539,7 @@
 
 2017.2.0b6:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.2.0
   build: b6
   underscore: 2017_2_0b6
@@ -550,7 +550,7 @@
 
 2017.1.1f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.1.1
   build: f1
   underscore: 2017_1_1f1
@@ -561,7 +561,7 @@
 
 2017.2.0b11:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.2.0
   build: b11
   underscore: 2017_2_0b11
@@ -572,7 +572,7 @@
 
 2017.2.0f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.2.0
   build: f1
   underscore: 2017_2_0f1
@@ -582,7 +582,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3232675
 
 2017.3.0b1:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.3.0
   build: b1
   underscore: 2017_3_0b1
@@ -593,7 +593,7 @@
 
 2017.1.2f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.1.2
   build: f1
   underscore: 2017_1_2f1
@@ -604,7 +604,7 @@
 
 2017.2.0f3:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.2.0
   build: f3
   underscore: 2017_2_0f3
@@ -614,7 +614,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3252098
 
 2017.3.0f1:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.3.0
   build: f1
   underscore: 2017_3_0f1
@@ -624,7 +624,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3313793
 
 2017.3.0p2:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.3.0
   build: p2
   underscore: 2017_3_0p2
@@ -635,7 +635,7 @@
 
 2017.2.1f1:
   legacy: true
-  dockerfile_name: unity-legacy-deb
+  dockerfile_name: unity_legacy_deb
   version: 2017.2.1
   build: f1
   underscore: 2017_2_1f1
@@ -645,7 +645,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3386889
 
 2017.3.1f1:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.3.1
   build: f1
   underscore: 2017_3_1f1
@@ -665,7 +665,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3398912
 
 2017.4.0f1:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.4.0
   build: f1
   underscore: 2017_4_0f1
@@ -695,7 +695,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3481193
 
 2017.4.2f2:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.4.2
   build: f2
   underscore: 2017_4_2f2
@@ -725,7 +725,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3509652
 
 2017.4.4f1:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.4.4
   build: f1
   underscore: 2017_4_4f1
@@ -785,7 +785,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3550996
 
 2017.4.6f1:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.4.6
   build: f1
   underscore: 2017_4_6f1
@@ -815,7 +815,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3559821
 
 2017.4.7f1:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.4.7
   build: f1
   underscore: 2017_4_7f1
@@ -825,7 +825,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3585169
 
 2017.4.8f1:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.4.8
   build: f1
   underscore: 2017_4_8f1
@@ -865,7 +865,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3596350
 
 2017.4.9f1:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.4.9
   build: f1
   underscore: 2017_4_9f1
@@ -885,7 +885,7 @@
   release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3603070
 
 2017.4.10f1:
-  dockerfile_name: unitysetup-2017
+  dockerfile_name: unitysetup_2017
   version: 2017.4.10
   build: f1
   underscore: 2017_4_10f1
