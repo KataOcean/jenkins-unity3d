@@ -62,7 +62,6 @@ before_script:
     SHA1: 21907d5e21cb0bb6f682ee99032bdce297b67df0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.2.21f1
     RELEASE_URL: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
-    
 
 build unity_2018_2_21f1:
   <<: *unity_2018_2_21f1
@@ -233,7 +232,6 @@ build-master unity_2018_2_21f1-facebook:
     SHA1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.3.14f1
     RELEASE_URL: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
-    
 
 build unity_2018_3_14f1:
   <<: *unity_2018_3_14f1
@@ -404,7 +402,6 @@ build-master unity_2018_3_14f1-facebook:
     SHA1: ed912fd8972be4f2a93ce322bcb955a0f06f4dbc
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.4.0f1
     RELEASE_URL: https://beta.unity3d.com/download/b6ffa8986c8d/public_download.html
-    
 
 build unity_2018_4_0f1:
   <<: *unity_2018_4_0f1

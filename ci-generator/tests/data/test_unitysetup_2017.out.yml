@@ -62,7 +62,6 @@ before_script:
     SHA1: 8dae4dd18df383a598830c6e2489cdecdcb19273
     RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.4.2
     RELEASE_URL: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
-    
 
 build unity_2017_4_27f1:
   <<: *unity_2017_4_27f1

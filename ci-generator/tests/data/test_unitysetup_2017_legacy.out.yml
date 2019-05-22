@@ -57,12 +57,10 @@ before_script:
     VERSION: 2017.2.1
     BUILD: f1
     TAG: 2017.2.1f1
-    # legacy doesn't use components
     DOWNLOAD_URL: https://beta.unity3d.com/download/ce9f6a0436e1+/unity-editor_amd64-2017.2.1f1.deb
     SHA1: af4301f17ec256095d133091f6a37a3cc74ce7da
     RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.2.1
     RELEASE_URL: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues350256/page-2#post-3386889
-    
 
 build unity_2017_2_1f1:
   <<: *unity_2017_2_1f1

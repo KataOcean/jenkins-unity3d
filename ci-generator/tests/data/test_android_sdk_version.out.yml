@@ -62,7 +62,7 @@ before_script:
     SHA1: ea97ef4c42180bd833e5b31b56f083b727a99cc8
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.3f1
     RELEASE_URL: https://beta.unity3d.com/download/dc414eb9ed43/public_download.html
-    LATEST: 1ANDROID_SDK_VERSION: custom_value_here
+    LATEST: 1
 
 build unity_2019_1_3f1:
   <<: *unity_2019_1_3f1
@@ -168,6 +168,7 @@ build-master unity_2019_1_3f1-ios:
     SHA1: ea97ef4c42180bd833e5b31b56f083b727a99cc8
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.3f1
     RELEASE_URL: https://beta.unity3d.com/download/dc414eb9ed43/public_download.html
+    ANDROID_SDK_VERSION: custom_value_here
 
 build unity_2019_1_3f1-android:
   <<: *unity_2019_1_3f1-android
