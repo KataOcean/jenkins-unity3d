@@ -25,7 +25,7 @@ This is only if you're using powershell 5.1. The commands below are specific to 
 ```powershell
 # Executed in this folder, ci-generator/
 $path = Resolve-Path ../.gitlab-ci.yml
-$result = python generate-gitlab-ci.py
+$result = python generate_gitlab_ci.py
 $encoding = New-Object Text.UTF8Encoding $False
 [IO.File]::WriteAllLines($path, $result, $encoding)
 ```
@@ -34,7 +34,7 @@ $encoding = New-Object Text.UTF8Encoding $False
 
 ```bash
 # Executed in this folder, ci-generator/
-python generate-gitlab-ci.py > ../.gitlab-ci.yml
+python generate_gitlab_ci.py > ../.gitlab-ci.yml
 ```
 
 ## 4. Done
@@ -62,3 +62,37 @@ example:
 wget https://beta.unity3d.com/download/dc414eb9ed43/UnitySetup-2019.1.3f1 -O unity.deb
 sha1sum unity.deb | awk '{print $1}'
 ```
+
+## Use a different Dockerfile for the version
+
+Do something like this:
+
+```yaml
+2018.4.0f1:
+  dockerfile: my-version-specific.Dockerfile
+  # ...
+```
+
+## Use a different Dockerfile for a component
+
+The script will automatically try to use the Dockerfile for the component so if you set a `dockerfile: unitysetup.Dockerfile`, the `android` component will use `unitysetup-android.Dockerfile` if it exists, otherwise, it will fallback to `unitysetup.Dockerfile`.
+
+## Development and testing
+
+It would be neat if this ran in the CI, but it's getting a bit meta here. I wrote test to make it easier to maintain the generator. It's only a way to get a breakpoint quickly anywhere in the code.
+
+### locally
+
+```bash
+pip install -r requirements.txt
+coverage run -m unittest tests/test*.py
+```
+
+### docker
+
+```bash
+docker run --rm -it -v "$PWD/../:/app" python:3.7-alpine sh -c \
+'cd /app/ci-generator && pip install -r requirements.txt && coverage run -m unittest tests/test*.py'
+```
+
+Coverage report is generated, open `htmlcov/index.html` :+1:

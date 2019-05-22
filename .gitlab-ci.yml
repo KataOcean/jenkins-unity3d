@@ -29,7 +29,7 @@ before_script:
 .build-master: &build-master
   stage: build
   script:
-    - docker build -f $DOCKERFILE $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG" .
+    - docker build -f ${DOCKERFILE_NAME}.Dockerfile $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG" .
     - docker push "$CI_REGISTRY_IMAGE:$TAG"
     - |
       if [ -n "$LATEST" ]; then
@@ -44,44 +44,24 @@ before_script:
 .build: &build
   stage: build
   script:
-    - docker build -f $DOCKERFILE $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG-$CI_COMMIT_REF_SLUG" .
+    - docker build -f ${DOCKERFILE_NAME}.Dockerfile $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG-$CI_COMMIT_REF_SLUG" .
     - docker push "$CI_REGISTRY_IMAGE:$TAG-$CI_COMMIT_REF_SLUG"
   retry: 2
   except:
     - master
-.unity_2017_2_1f1: &unity_2017_2_1f1
-  variables:
-    DOCKERFILE: unity-legacy-deb.Dockerfile
-    VERSION: 2017.2.1
-    BUILD: f1
-    TAG: 2017.2.1f1
-    COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
-    DOWNLOAD_URL: https://beta.unity3d.com/download/ce9f6a0436e1+/unity-editor_amd64-2017.2.1f1.deb
-    SHA1: af4301f17ec256095d133091f6a37a3cc74ce7da
-    RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.2.1
-    RELEASE_URL: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3386889
-    
 
-build unity_2017_2_1f1:
-  <<: *unity_2017_2_1f1
-  <<: *build
-
-build-master unity_2017_2_1f1:
-  <<: *unity_2017_2_1f1
-  <<: *build-master
-
+# main build for 2017.4.27f1
 .unity_2017_4_27f1: &unity_2017_4_27f1
   variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
+    DOCKERFILE_NAME: unitysetup_2017
     VERSION: 2017.4.27
     BUILD: f1
     TAG: 2017.4.27f1
-    COMPONENTS: Unity,Windows,Mac,WebGL
+    COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
     DOWNLOAD_URL: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
     SHA1: 8dae4dd18df383a598830c6e2489cdecdcb19273
     RELEASE_NOTES: https://unity3d.com/unity/whatsnew/unity-2017.4.2
     RELEASE_URL: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
-    
 
 build unity_2017_4_27f1:
   <<: *unity_2017_4_27f1
@@ -90,9 +70,11 @@ build unity_2017_4_27f1:
 build-master unity_2017_4_27f1:
   <<: *unity_2017_4_27f1
   <<: *build-master
+
+# platform specific for 2017.4.27f1: unity
 .unity_2017_4_27f1-unity: &unity_2017_4_27f1-unity
   variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
+    DOCKERFILE_NAME: unitysetup_2017
     VERSION: 2017.4.27
     BUILD: f1
     TAG: 2017.4.27f1-unity
@@ -110,9 +92,10 @@ build-master unity_2017_4_27f1-unity:
   <<: *unity_2017_4_27f1-unity
   <<: *build-master
 
+# platform specific for 2017.4.27f1: windows
 .unity_2017_4_27f1-windows: &unity_2017_4_27f1-windows
   variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
+    DOCKERFILE_NAME: unitysetup_2017
     VERSION: 2017.4.27
     BUILD: f1
     TAG: 2017.4.27f1-windows
@@ -130,9 +113,10 @@ build-master unity_2017_4_27f1-windows:
   <<: *unity_2017_4_27f1-windows
   <<: *build-master
 
+# platform specific for 2017.4.27f1: mac
 .unity_2017_4_27f1-mac: &unity_2017_4_27f1-mac
   variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
+    DOCKERFILE_NAME: unitysetup_2017
     VERSION: 2017.4.27
     BUILD: f1
     TAG: 2017.4.27f1-mac
@@ -150,9 +134,10 @@ build-master unity_2017_4_27f1-mac:
   <<: *unity_2017_4_27f1-mac
   <<: *build-master
 
+# platform specific for 2017.4.27f1: ios
 .unity_2017_4_27f1-ios: &unity_2017_4_27f1-ios
   variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
+    DOCKERFILE_NAME: unitysetup_2017
     VERSION: 2017.4.27
     BUILD: f1
     TAG: 2017.4.27f1-ios
@@ -170,9 +155,10 @@ build-master unity_2017_4_27f1-ios:
   <<: *unity_2017_4_27f1-ios
   <<: *build-master
 
+# platform specific for 2017.4.27f1: android
 .unity_2017_4_27f1-android: &unity_2017_4_27f1-android
   variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
+    DOCKERFILE_NAME: unitysetup_2017-android
     VERSION: 2017.4.27
     BUILD: f1
     TAG: 2017.4.27f1-android
@@ -190,9 +176,10 @@ build-master unity_2017_4_27f1-android:
   <<: *unity_2017_4_27f1-android
   <<: *build-master
 
+# platform specific for 2017.4.27f1: webgl
 .unity_2017_4_27f1-webgl: &unity_2017_4_27f1-webgl
   variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
+    DOCKERFILE_NAME: unitysetup_2017
     VERSION: 2017.4.27
     BUILD: f1
     TAG: 2017.4.27f1-webgl
@@ -210,9 +197,10 @@ build-master unity_2017_4_27f1-webgl:
   <<: *unity_2017_4_27f1-webgl
   <<: *build-master
 
+# platform specific for 2017.4.27f1: facebook
 .unity_2017_4_27f1-facebook: &unity_2017_4_27f1-facebook
   variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
+    DOCKERFILE_NAME: unitysetup_2017
     VERSION: 2017.4.27
     BUILD: f1
     TAG: 2017.4.27f1-facebook
@@ -232,333 +220,10 @@ build-master unity_2017_4_27f1-facebook:
 
 
 
-.unity_2017_3_0b1: &unity_2017_3_0b1
-  variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
-    VERSION: 2017.3.0
-    BUILD: b1
-    TAG: 2017.3.0b1
-    COMPONENTS: Unity,Windows,Mac,WebGL
-    DOWNLOAD_URL: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
-    SHA1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
-    RELEASE_NOTES: https://unity3d.com/unity/beta/unity2017.3.0b1
-    RELEASE_URL: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3234332
-    
-
-build unity_2017_3_0b1:
-  <<: *unity_2017_3_0b1
-  <<: *build
-
-build-master unity_2017_3_0b1:
-  <<: *unity_2017_3_0b1
-  <<: *build-master
-.unity_2017_3_0b1-unity: &unity_2017_3_0b1-unity
-  variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
-    VERSION: 2017.3.0
-    BUILD: b1
-    TAG: 2017.3.0b1-unity
-    COMPONENTS: Unity
-    DOWNLOAD_URL: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
-    SHA1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
-    RELEASE_NOTES: https://unity3d.com/unity/beta/unity2017.3.0b1
-    RELEASE_URL: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3234332
-
-build unity_2017_3_0b1-unity:
-  <<: *unity_2017_3_0b1-unity
-  <<: *build
-
-build-master unity_2017_3_0b1-unity:
-  <<: *unity_2017_3_0b1-unity
-  <<: *build-master
-
-.unity_2017_3_0b1-windows: &unity_2017_3_0b1-windows
-  variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
-    VERSION: 2017.3.0
-    BUILD: b1
-    TAG: 2017.3.0b1-windows
-    COMPONENTS: Unity,Windows
-    DOWNLOAD_URL: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
-    SHA1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
-    RELEASE_NOTES: https://unity3d.com/unity/beta/unity2017.3.0b1
-    RELEASE_URL: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3234332
-
-build unity_2017_3_0b1-windows:
-  <<: *unity_2017_3_0b1-windows
-  <<: *build
-
-build-master unity_2017_3_0b1-windows:
-  <<: *unity_2017_3_0b1-windows
-  <<: *build-master
-
-.unity_2017_3_0b1-mac: &unity_2017_3_0b1-mac
-  variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
-    VERSION: 2017.3.0
-    BUILD: b1
-    TAG: 2017.3.0b1-mac
-    COMPONENTS: Unity,Mac
-    DOWNLOAD_URL: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
-    SHA1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
-    RELEASE_NOTES: https://unity3d.com/unity/beta/unity2017.3.0b1
-    RELEASE_URL: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3234332
-
-build unity_2017_3_0b1-mac:
-  <<: *unity_2017_3_0b1-mac
-  <<: *build
-
-build-master unity_2017_3_0b1-mac:
-  <<: *unity_2017_3_0b1-mac
-  <<: *build-master
-
-.unity_2017_3_0b1-ios: &unity_2017_3_0b1-ios
-  variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
-    VERSION: 2017.3.0
-    BUILD: b1
-    TAG: 2017.3.0b1-ios
-    COMPONENTS: Unity,iOS
-    DOWNLOAD_URL: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
-    SHA1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
-    RELEASE_NOTES: https://unity3d.com/unity/beta/unity2017.3.0b1
-    RELEASE_URL: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3234332
-
-build unity_2017_3_0b1-ios:
-  <<: *unity_2017_3_0b1-ios
-  <<: *build
-
-build-master unity_2017_3_0b1-ios:
-  <<: *unity_2017_3_0b1-ios
-  <<: *build-master
-
-.unity_2017_3_0b1-android: &unity_2017_3_0b1-android
-  variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
-    VERSION: 2017.3.0
-    BUILD: b1
-    TAG: 2017.3.0b1-android
-    COMPONENTS: Unity,Android
-    DOWNLOAD_URL: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
-    SHA1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
-    RELEASE_NOTES: https://unity3d.com/unity/beta/unity2017.3.0b1
-    RELEASE_URL: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3234332
-
-build unity_2017_3_0b1-android:
-  <<: *unity_2017_3_0b1-android
-  <<: *build
-
-build-master unity_2017_3_0b1-android:
-  <<: *unity_2017_3_0b1-android
-  <<: *build-master
-
-.unity_2017_3_0b1-webgl: &unity_2017_3_0b1-webgl
-  variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
-    VERSION: 2017.3.0
-    BUILD: b1
-    TAG: 2017.3.0b1-webgl
-    COMPONENTS: Unity,WebGL
-    DOWNLOAD_URL: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
-    SHA1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
-    RELEASE_NOTES: https://unity3d.com/unity/beta/unity2017.3.0b1
-    RELEASE_URL: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3234332
-
-build unity_2017_3_0b1-webgl:
-  <<: *unity_2017_3_0b1-webgl
-  <<: *build
-
-build-master unity_2017_3_0b1-webgl:
-  <<: *unity_2017_3_0b1-webgl
-  <<: *build-master
-
-.unity_2017_3_0b1-facebook: &unity_2017_3_0b1-facebook
-  variables:
-    DOCKERFILE: unitysetup-2017.Dockerfile
-    VERSION: 2017.3.0
-    BUILD: b1
-    TAG: 2017.3.0b1-facebook
-    COMPONENTS: Unity,Facebook-Games
-    DOWNLOAD_URL: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
-    SHA1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
-    RELEASE_NOTES: https://unity3d.com/unity/beta/unity2017.3.0b1
-    RELEASE_URL: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3234332
-
-build unity_2017_3_0b1-facebook:
-  <<: *unity_2017_3_0b1-facebook
-  <<: *build
-
-build-master unity_2017_3_0b1-facebook:
-  <<: *unity_2017_3_0b1-facebook
-  <<: *build-master
-
-
-
-.unity_2019_1_2f1: &unity_2019_1_2f1
-  variables:
-    DOCKERFILE: unitysetup.Dockerfile
-    VERSION: 2019.1.2
-    BUILD: f1
-    TAG: 2019.1.2f1
-    COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
-    DOWNLOAD_URL: https://beta.unity3d.com/download/3e18427e571f/UnitySetup-2019.1.2f1
-    SHA1: 64809d740e51a72079f270e636bfee77d38d7ea3
-    RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.2
-    RELEASE_URL: https://beta.unity3d.com/download/3e18427e571f/public_download.html
-    
-
-build unity_2019_1_2f1:
-  <<: *unity_2019_1_2f1
-  <<: *build
-
-build-master unity_2019_1_2f1:
-  <<: *unity_2019_1_2f1
-  <<: *build-master
-.unity_2019_1_2f1-unity: &unity_2019_1_2f1-unity
-  variables:
-    DOCKERFILE: unitysetup.Dockerfile
-    VERSION: 2019.1.2
-    BUILD: f1
-    TAG: 2019.1.2f1-unity
-    COMPONENTS: Unity
-    DOWNLOAD_URL: https://beta.unity3d.com/download/3e18427e571f/UnitySetup-2019.1.2f1
-    SHA1: 64809d740e51a72079f270e636bfee77d38d7ea3
-    RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.2
-    RELEASE_URL: https://beta.unity3d.com/download/3e18427e571f/public_download.html
-
-build unity_2019_1_2f1-unity:
-  <<: *unity_2019_1_2f1-unity
-  <<: *build
-
-build-master unity_2019_1_2f1-unity:
-  <<: *unity_2019_1_2f1-unity
-  <<: *build-master
-
-.unity_2019_1_2f1-windows: &unity_2019_1_2f1-windows
-  variables:
-    DOCKERFILE: unitysetup.Dockerfile
-    VERSION: 2019.1.2
-    BUILD: f1
-    TAG: 2019.1.2f1-windows
-    COMPONENTS: Unity,Windows,Windows-Mono
-    DOWNLOAD_URL: https://beta.unity3d.com/download/3e18427e571f/UnitySetup-2019.1.2f1
-    SHA1: 64809d740e51a72079f270e636bfee77d38d7ea3
-    RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.2
-    RELEASE_URL: https://beta.unity3d.com/download/3e18427e571f/public_download.html
-
-build unity_2019_1_2f1-windows:
-  <<: *unity_2019_1_2f1-windows
-  <<: *build
-
-build-master unity_2019_1_2f1-windows:
-  <<: *unity_2019_1_2f1-windows
-  <<: *build-master
-
-.unity_2019_1_2f1-mac: &unity_2019_1_2f1-mac
-  variables:
-    DOCKERFILE: unitysetup.Dockerfile
-    VERSION: 2019.1.2
-    BUILD: f1
-    TAG: 2019.1.2f1-mac
-    COMPONENTS: Unity,Mac,Mac-Mono
-    DOWNLOAD_URL: https://beta.unity3d.com/download/3e18427e571f/UnitySetup-2019.1.2f1
-    SHA1: 64809d740e51a72079f270e636bfee77d38d7ea3
-    RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.2
-    RELEASE_URL: https://beta.unity3d.com/download/3e18427e571f/public_download.html
-
-build unity_2019_1_2f1-mac:
-  <<: *unity_2019_1_2f1-mac
-  <<: *build
-
-build-master unity_2019_1_2f1-mac:
-  <<: *unity_2019_1_2f1-mac
-  <<: *build-master
-
-.unity_2019_1_2f1-ios: &unity_2019_1_2f1-ios
-  variables:
-    DOCKERFILE: unitysetup.Dockerfile
-    VERSION: 2019.1.2
-    BUILD: f1
-    TAG: 2019.1.2f1-ios
-    COMPONENTS: Unity,iOS
-    DOWNLOAD_URL: https://beta.unity3d.com/download/3e18427e571f/UnitySetup-2019.1.2f1
-    SHA1: 64809d740e51a72079f270e636bfee77d38d7ea3
-    RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.2
-    RELEASE_URL: https://beta.unity3d.com/download/3e18427e571f/public_download.html
-
-build unity_2019_1_2f1-ios:
-  <<: *unity_2019_1_2f1-ios
-  <<: *build
-
-build-master unity_2019_1_2f1-ios:
-  <<: *unity_2019_1_2f1-ios
-  <<: *build-master
-
-.unity_2019_1_2f1-android: &unity_2019_1_2f1-android
-  variables:
-    DOCKERFILE: unitysetup.Dockerfile
-    VERSION: 2019.1.2
-    BUILD: f1
-    TAG: 2019.1.2f1-android
-    COMPONENTS: Unity,Android
-    DOWNLOAD_URL: https://beta.unity3d.com/download/3e18427e571f/UnitySetup-2019.1.2f1
-    SHA1: 64809d740e51a72079f270e636bfee77d38d7ea3
-    RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.2
-    RELEASE_URL: https://beta.unity3d.com/download/3e18427e571f/public_download.html
-
-build unity_2019_1_2f1-android:
-  <<: *unity_2019_1_2f1-android
-  <<: *build
-
-build-master unity_2019_1_2f1-android:
-  <<: *unity_2019_1_2f1-android
-  <<: *build-master
-
-.unity_2019_1_2f1-webgl: &unity_2019_1_2f1-webgl
-  variables:
-    DOCKERFILE: unitysetup.Dockerfile
-    VERSION: 2019.1.2
-    BUILD: f1
-    TAG: 2019.1.2f1-webgl
-    COMPONENTS: Unity,WebGL
-    DOWNLOAD_URL: https://beta.unity3d.com/download/3e18427e571f/UnitySetup-2019.1.2f1
-    SHA1: 64809d740e51a72079f270e636bfee77d38d7ea3
-    RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.2
-    RELEASE_URL: https://beta.unity3d.com/download/3e18427e571f/public_download.html
-
-build unity_2019_1_2f1-webgl:
-  <<: *unity_2019_1_2f1-webgl
-  <<: *build
-
-build-master unity_2019_1_2f1-webgl:
-  <<: *unity_2019_1_2f1-webgl
-  <<: *build-master
-
-.unity_2019_1_2f1-facebook: &unity_2019_1_2f1-facebook
-  variables:
-    DOCKERFILE: unitysetup.Dockerfile
-    VERSION: 2019.1.2
-    BUILD: f1
-    TAG: 2019.1.2f1-facebook
-    COMPONENTS: Unity,Facebook-Games
-    DOWNLOAD_URL: https://beta.unity3d.com/download/3e18427e571f/UnitySetup-2019.1.2f1
-    SHA1: 64809d740e51a72079f270e636bfee77d38d7ea3
-    RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.2
-    RELEASE_URL: https://beta.unity3d.com/download/3e18427e571f/public_download.html
-
-build unity_2019_1_2f1-facebook:
-  <<: *unity_2019_1_2f1-facebook
-  <<: *build
-
-build-master unity_2019_1_2f1-facebook:
-  <<: *unity_2019_1_2f1-facebook
-  <<: *build-master
-
-
-
+# main build for 2018.2.21f1
 .unity_2018_2_21f1: &unity_2018_2_21f1
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.2.21
     BUILD: f1
     TAG: 2018.2.21f1
@@ -567,7 +232,6 @@ build-master unity_2019_1_2f1-facebook:
     SHA1: 21907d5e21cb0bb6f682ee99032bdce297b67df0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.2.21f1
     RELEASE_URL: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
-    
 
 build unity_2018_2_21f1:
   <<: *unity_2018_2_21f1
@@ -576,9 +240,11 @@ build unity_2018_2_21f1:
 build-master unity_2018_2_21f1:
   <<: *unity_2018_2_21f1
   <<: *build-master
+
+# platform specific for 2018.2.21f1: unity
 .unity_2018_2_21f1-unity: &unity_2018_2_21f1-unity
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.2.21
     BUILD: f1
     TAG: 2018.2.21f1-unity
@@ -596,9 +262,10 @@ build-master unity_2018_2_21f1-unity:
   <<: *unity_2018_2_21f1-unity
   <<: *build-master
 
+# platform specific for 2018.2.21f1: windows
 .unity_2018_2_21f1-windows: &unity_2018_2_21f1-windows
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.2.21
     BUILD: f1
     TAG: 2018.2.21f1-windows
@@ -616,9 +283,10 @@ build-master unity_2018_2_21f1-windows:
   <<: *unity_2018_2_21f1-windows
   <<: *build-master
 
+# platform specific for 2018.2.21f1: mac
 .unity_2018_2_21f1-mac: &unity_2018_2_21f1-mac
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.2.21
     BUILD: f1
     TAG: 2018.2.21f1-mac
@@ -636,9 +304,10 @@ build-master unity_2018_2_21f1-mac:
   <<: *unity_2018_2_21f1-mac
   <<: *build-master
 
+# platform specific for 2018.2.21f1: ios
 .unity_2018_2_21f1-ios: &unity_2018_2_21f1-ios
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.2.21
     BUILD: f1
     TAG: 2018.2.21f1-ios
@@ -656,9 +325,10 @@ build-master unity_2018_2_21f1-ios:
   <<: *unity_2018_2_21f1-ios
   <<: *build-master
 
+# platform specific for 2018.2.21f1: android
 .unity_2018_2_21f1-android: &unity_2018_2_21f1-android
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup-android
     VERSION: 2018.2.21
     BUILD: f1
     TAG: 2018.2.21f1-android
@@ -676,9 +346,10 @@ build-master unity_2018_2_21f1-android:
   <<: *unity_2018_2_21f1-android
   <<: *build-master
 
+# platform specific for 2018.2.21f1: webgl
 .unity_2018_2_21f1-webgl: &unity_2018_2_21f1-webgl
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.2.21
     BUILD: f1
     TAG: 2018.2.21f1-webgl
@@ -696,9 +367,10 @@ build-master unity_2018_2_21f1-webgl:
   <<: *unity_2018_2_21f1-webgl
   <<: *build-master
 
+# platform specific for 2018.2.21f1: facebook
 .unity_2018_2_21f1-facebook: &unity_2018_2_21f1-facebook
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.2.21
     BUILD: f1
     TAG: 2018.2.21f1-facebook
@@ -718,9 +390,10 @@ build-master unity_2018_2_21f1-facebook:
 
 
 
+# main build for 2018.3.14f1
 .unity_2018_3_14f1: &unity_2018_3_14f1
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.3.14
     BUILD: f1
     TAG: 2018.3.14f1
@@ -729,7 +402,6 @@ build-master unity_2018_2_21f1-facebook:
     SHA1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.3.14f1
     RELEASE_URL: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
-    
 
 build unity_2018_3_14f1:
   <<: *unity_2018_3_14f1
@@ -738,9 +410,11 @@ build unity_2018_3_14f1:
 build-master unity_2018_3_14f1:
   <<: *unity_2018_3_14f1
   <<: *build-master
+
+# platform specific for 2018.3.14f1: unity
 .unity_2018_3_14f1-unity: &unity_2018_3_14f1-unity
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.3.14
     BUILD: f1
     TAG: 2018.3.14f1-unity
@@ -758,9 +432,10 @@ build-master unity_2018_3_14f1-unity:
   <<: *unity_2018_3_14f1-unity
   <<: *build-master
 
+# platform specific for 2018.3.14f1: windows
 .unity_2018_3_14f1-windows: &unity_2018_3_14f1-windows
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.3.14
     BUILD: f1
     TAG: 2018.3.14f1-windows
@@ -778,9 +453,10 @@ build-master unity_2018_3_14f1-windows:
   <<: *unity_2018_3_14f1-windows
   <<: *build-master
 
+# platform specific for 2018.3.14f1: mac
 .unity_2018_3_14f1-mac: &unity_2018_3_14f1-mac
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.3.14
     BUILD: f1
     TAG: 2018.3.14f1-mac
@@ -798,9 +474,10 @@ build-master unity_2018_3_14f1-mac:
   <<: *unity_2018_3_14f1-mac
   <<: *build-master
 
+# platform specific for 2018.3.14f1: ios
 .unity_2018_3_14f1-ios: &unity_2018_3_14f1-ios
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.3.14
     BUILD: f1
     TAG: 2018.3.14f1-ios
@@ -818,9 +495,10 @@ build-master unity_2018_3_14f1-ios:
   <<: *unity_2018_3_14f1-ios
   <<: *build-master
 
+# platform specific for 2018.3.14f1: android
 .unity_2018_3_14f1-android: &unity_2018_3_14f1-android
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup-android
     VERSION: 2018.3.14
     BUILD: f1
     TAG: 2018.3.14f1-android
@@ -838,9 +516,10 @@ build-master unity_2018_3_14f1-android:
   <<: *unity_2018_3_14f1-android
   <<: *build-master
 
+# platform specific for 2018.3.14f1: webgl
 .unity_2018_3_14f1-webgl: &unity_2018_3_14f1-webgl
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.3.14
     BUILD: f1
     TAG: 2018.3.14f1-webgl
@@ -858,9 +537,10 @@ build-master unity_2018_3_14f1-webgl:
   <<: *unity_2018_3_14f1-webgl
   <<: *build-master
 
+# platform specific for 2018.3.14f1: facebook
 .unity_2018_3_14f1-facebook: &unity_2018_3_14f1-facebook
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.3.14
     BUILD: f1
     TAG: 2018.3.14f1-facebook
@@ -880,9 +560,10 @@ build-master unity_2018_3_14f1-facebook:
 
 
 
+# main build for 2018.4.0f1
 .unity_2018_4_0f1: &unity_2018_4_0f1
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.4.0
     BUILD: f1
     TAG: 2018.4.0f1
@@ -891,7 +572,6 @@ build-master unity_2018_3_14f1-facebook:
     SHA1: ed912fd8972be4f2a93ce322bcb955a0f06f4dbc
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.4.0f1
     RELEASE_URL: https://beta.unity3d.com/download/b6ffa8986c8d/public_download.html
-    
 
 build unity_2018_4_0f1:
   <<: *unity_2018_4_0f1
@@ -900,9 +580,11 @@ build unity_2018_4_0f1:
 build-master unity_2018_4_0f1:
   <<: *unity_2018_4_0f1
   <<: *build-master
+
+# platform specific for 2018.4.0f1: unity
 .unity_2018_4_0f1-unity: &unity_2018_4_0f1-unity
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.4.0
     BUILD: f1
     TAG: 2018.4.0f1-unity
@@ -920,9 +602,10 @@ build-master unity_2018_4_0f1-unity:
   <<: *unity_2018_4_0f1-unity
   <<: *build-master
 
+# platform specific for 2018.4.0f1: windows
 .unity_2018_4_0f1-windows: &unity_2018_4_0f1-windows
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.4.0
     BUILD: f1
     TAG: 2018.4.0f1-windows
@@ -940,9 +623,10 @@ build-master unity_2018_4_0f1-windows:
   <<: *unity_2018_4_0f1-windows
   <<: *build-master
 
+# platform specific for 2018.4.0f1: mac
 .unity_2018_4_0f1-mac: &unity_2018_4_0f1-mac
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.4.0
     BUILD: f1
     TAG: 2018.4.0f1-mac
@@ -960,9 +644,10 @@ build-master unity_2018_4_0f1-mac:
   <<: *unity_2018_4_0f1-mac
   <<: *build-master
 
+# platform specific for 2018.4.0f1: ios
 .unity_2018_4_0f1-ios: &unity_2018_4_0f1-ios
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.4.0
     BUILD: f1
     TAG: 2018.4.0f1-ios
@@ -980,9 +665,10 @@ build-master unity_2018_4_0f1-ios:
   <<: *unity_2018_4_0f1-ios
   <<: *build-master
 
+# platform specific for 2018.4.0f1: android
 .unity_2018_4_0f1-android: &unity_2018_4_0f1-android
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup-android
     VERSION: 2018.4.0
     BUILD: f1
     TAG: 2018.4.0f1-android
@@ -1000,9 +686,10 @@ build-master unity_2018_4_0f1-android:
   <<: *unity_2018_4_0f1-android
   <<: *build-master
 
+# platform specific for 2018.4.0f1: webgl
 .unity_2018_4_0f1-webgl: &unity_2018_4_0f1-webgl
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.4.0
     BUILD: f1
     TAG: 2018.4.0f1-webgl
@@ -1020,9 +707,10 @@ build-master unity_2018_4_0f1-webgl:
   <<: *unity_2018_4_0f1-webgl
   <<: *build-master
 
+# platform specific for 2018.4.0f1: facebook
 .unity_2018_4_0f1-facebook: &unity_2018_4_0f1-facebook
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2018.4.0
     BUILD: f1
     TAG: 2018.4.0f1-facebook
@@ -1042,9 +730,10 @@ build-master unity_2018_4_0f1-facebook:
 
 
 
+# main build for 2019.1.3f1
 .unity_2019_1_3f1: &unity_2019_1_3f1
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1
@@ -1062,9 +751,11 @@ build unity_2019_1_3f1:
 build-master unity_2019_1_3f1:
   <<: *unity_2019_1_3f1
   <<: *build-master
+
+# platform specific for 2019.1.3f1: unity
 .unity_2019_1_3f1-unity: &unity_2019_1_3f1-unity
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-unity
@@ -1082,9 +773,10 @@ build-master unity_2019_1_3f1-unity:
   <<: *unity_2019_1_3f1-unity
   <<: *build-master
 
+# platform specific for 2019.1.3f1: windows
 .unity_2019_1_3f1-windows: &unity_2019_1_3f1-windows
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-windows
@@ -1102,9 +794,10 @@ build-master unity_2019_1_3f1-windows:
   <<: *unity_2019_1_3f1-windows
   <<: *build-master
 
+# platform specific for 2019.1.3f1: mac
 .unity_2019_1_3f1-mac: &unity_2019_1_3f1-mac
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-mac
@@ -1122,9 +815,10 @@ build-master unity_2019_1_3f1-mac:
   <<: *unity_2019_1_3f1-mac
   <<: *build-master
 
+# platform specific for 2019.1.3f1: ios
 .unity_2019_1_3f1-ios: &unity_2019_1_3f1-ios
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-ios
@@ -1142,9 +836,10 @@ build-master unity_2019_1_3f1-ios:
   <<: *unity_2019_1_3f1-ios
   <<: *build-master
 
+# platform specific for 2019.1.3f1: android
 .unity_2019_1_3f1-android: &unity_2019_1_3f1-android
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup-android
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-android
@@ -1162,9 +857,10 @@ build-master unity_2019_1_3f1-android:
   <<: *unity_2019_1_3f1-android
   <<: *build-master
 
+# platform specific for 2019.1.3f1: webgl
 .unity_2019_1_3f1-webgl: &unity_2019_1_3f1-webgl
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-webgl
@@ -1182,9 +878,10 @@ build-master unity_2019_1_3f1-webgl:
   <<: *unity_2019_1_3f1-webgl
   <<: *build-master
 
+# platform specific for 2019.1.3f1: facebook
 .unity_2019_1_3f1-facebook: &unity_2019_1_3f1-facebook
   variables:
-    DOCKERFILE: unitysetup.Dockerfile
+    DOCKERFILE_NAME: unitysetup
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1-facebook
