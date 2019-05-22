@@ -3,7 +3,7 @@
 [![pipeline status](https://gitlab.com/gableroux/unity3d/badges/master/pipeline.svg)](https://gitlab.com/gableroux/unity3d/commits/master) [![Docker Stars](https://img.shields.io/docker/stars/gableroux/unity3d.svg)](https://hub.docker.com/r/gableroux/unity3d/) [![Docker Pulls](https://img.shields.io/docker/pulls/gableroux/unity3d.svg)](https://hub.docker.com/r/gableroux/unity3d/) [![Docker Automated build](https://img.shields.io/docker/automated/gableroux/unity3d.svg)](https://hub.docker.com/r/gableroux/unity3d/) [![Image](https://images.microbadger.com/badges/image/gableroux/unity3d.svg)](https://microbadger.com/images/gableroux/unity3d) [![Version](https://images.microbadger.com/badges/version/gableroux/unity3d.svg)](https://microbadger.com/images/gableroux/unity3d)
 
 This project builds docker images for all unity versions and their components. It contains a script that generates a `.gitlab-ci.yml` that is used to build and publish all of the images.
-all supported versions can be found in [`ci-generator/unity_versions.yml`](ci-generator/unity_versions.yml) and [`ci-generator/unity_versions.yml`](ci-generator/unity_versions.old.yml).
+all supported versions can be found in [`ci-generator/unity_versions.yml`](ci-generator/unity_versions.yml) (latest built images)  and [`ci-generator/unity_versions.old.yml`](ci-generator/unity_versions.old.yml) (already built images).
 
 ## Things to consider
 
