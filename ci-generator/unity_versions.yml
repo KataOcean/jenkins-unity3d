@@ -1,61 +1,5 @@
-# testing a legacy image
-2017.2.1f1:
-  legacy: true
-  dockerfile: unity-legacy-deb.Dockerfile
-  version: 2017.2.1
-  build: f1
-  underscore: 2017_2_1f1
-  download_url: https://beta.unity3d.com/download/ce9f6a0436e1+/unity-editor_amd64-2017.2.1f1.deb
-  sha1: af4301f17ec256095d133091f6a37a3cc74ce7da
-  release_notes: https://unity3d.com/unity/whatsnew/unity-2017.2.1
-  release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3386889
-
-# testing the most recent 2017 image with fix for GTK, ref https://gitlab.com/gableroux/unity3d/issues/19
-2017.4.27f1:
-  # This version doesn't use Mac-Mono and Windows-Mono so we need to override components
-  components:
-    base: Unity,Windows,Mac,WebGL
-    mac: Unity,Mac
-    windows: Unity,Windows
-  dockerfile: unitysetup-2017.Dockerfile
-  version: 2017.4.27
-  build: f1
-  underscore: 2017_4_27f1
-  download_url: https://beta.unity3d.com/download/0c4b856e4c6e/UnitySetup-2017.4.27f1
-  sha1: 8dae4dd18df383a598830c6e2489cdecdcb19273
-  release_notes: https://unity3d.com/unity/whatsnew/unity-2017.4.2
-  release_url: https://download.unity3d.com/download_unity/0c4b856e4c6e/public_download.html
-
-# testing the actual image that previously failed to build in https://gitlab.com/gableroux/unity3d/issues/19
-2017.3.0b1:
-  # This version doesn't use Mac-Mono and Windows-Mono so we need to override components
-  components:
-    base: Unity,Windows,Mac,WebGL
-    mac: Unity,Mac
-    windows: Unity,Windows
-  dockerfile: unitysetup-2017.Dockerfile
-  version: 2017.3.0
-  build: b1
-  underscore: 2017_3_0b1
-  download_url: http://beta.unity3d.com/download/2ca68d182788/UnitySetup-2017.3.0b1
-  sha1: 2c7e3358f4833070ac5266b0abc90aea8f4875c8
-  release_notes: https://unity3d.com/unity/beta/unity2017.3.0b1
-  release_url: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/page-2#post-3234332
-
-# Testing the latest unitysetup
-2019.1.2f1:
-  dockerfile: unitysetup.Dockerfile
-  version: 2019.1.2
-  build: f1
-  underscore: 2019_1_2f1
-  download_url: https://beta.unity3d.com/download/3e18427e571f/UnitySetup-2019.1.2f1
-  sha1: 64809d740e51a72079f270e636bfee77d38d7ea3
-  release_notes: https://unity3d.com/unity/whats-new/2019.1.2
-  release_url: https://beta.unity3d.com/download/3e18427e571f/public_download.html
-
-# Yet another version
 2018.2.21f1:
-  dockerfile: unitysetup.Dockerfile
+  dockerfile_name: unitysetup
   version: 2018.2.21
   build: f1
   underscore: 2018_2_21f1
@@ -64,9 +8,8 @@
   release_notes: https://unity3d.com/unity/whats-new/2018.2.21f1
   release_url: https://beta.unity3d.com/download/a122f5dc316d/public_download.html
 
-# Yet another version
 2018.3.14f1:
-  dockerfile: unitysetup.Dockerfile
+  dockerfile_name: unitysetup
   version: 2018.3.14
   build: f1
   underscore: 2018_3_14f1
@@ -75,9 +18,8 @@
   release_notes: https://unity3d.com/unity/whats-new/2018.3.14f1
   release_url: https://beta.unity3d.com/download/d0e9f15437b1/public_download.html
 
-# Yet another version
 2018.4.0f1:
-  dockerfile: unitysetup.Dockerfile
+  dockerfile_name: unitysetup
   version: 2018.4.0
   build: f1
   underscore: 2018_4_0f1
@@ -86,10 +28,9 @@
   release_notes: https://unity3d.com/unity/whats-new/2018.4.0f1
   release_url: https://beta.unity3d.com/download/b6ffa8986c8d/public_download.html
 
-# Yet another version
 2019.1.3f1:
   latest: true
-  dockerfile: unitysetup.Dockerfile
+  dockerfile_name: unitysetup
   version: 2019.1.3
   build: f1
   underscore: 2019_1_3f1

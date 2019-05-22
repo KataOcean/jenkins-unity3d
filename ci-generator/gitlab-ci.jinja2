@@ -28,7 +28,7 @@ before_script:
 .build-master: &build-master
   stage: build
   script:
-    - docker build -f $DOCKERFILE $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG" .
+    - docker build -f $DOCKERFILE_NAME $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG" .
     - docker push "$CI_REGISTRY_IMAGE:$TAG"
     - |
       if [ -n "$LATEST" ]; then
@@ -43,7 +43,7 @@ before_script:
 .build: &build
   stage: build
   script:
-    - docker build -f $DOCKERFILE $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG-$CI_COMMIT_REF_SLUG" .
+    - docker build -f $DOCKERFILE_NAME $IMAGE_LABELS --label build-date=`date -Iseconds` $IMAGE_ARGUMENTS --pull -t "$CI_REGISTRY_IMAGE:$TAG-$CI_COMMIT_REF_SLUG" .
     - docker push "$CI_REGISTRY_IMAGE:$TAG-$CI_COMMIT_REF_SLUG"
   retry: 2
   except:
@@ -55,15 +55,15 @@ nothing_to_build:
   script:
     echo 'All versions are already built, skipping'
 {%- else %}
-{%- for version_key, version in versions.items() %}
+{% for version_key, version in versions.items() %}
 {#- main build #}
 .unity_{{version.underscore}}: &unity_{{version.underscore}}
   variables:
-    DOCKERFILE: {% if version.dockerfile %}{{version.dockerfile}}{% else %}Dockerfile{% endif %}
+    DOCKERFILE_NAME: {{version.dockerfile_name}}
     VERSION: {{version.version}}
     BUILD: {{version.build}}
     TAG: {{version_key}}
-    COMPONENTS: {% if version.components %}{{version.components['base'] | default(base_components)}}{% else %}{{base_components}}{% endif %}
+    COMPONENTS: {{version.base_components}}
     DOWNLOAD_URL: {{version.download_url}}
     {% if version.sha1 %}SHA1: {{version.sha1}}{% endif %}
     {% if version.release_notes %}RELEASE_NOTES: {{version.release_notes}}{% endif %}
@@ -78,27 +78,27 @@ build-master unity_{{version.underscore}}:
   <<: *unity_{{version.underscore}}
   <<: *build-master
 
-{#- component specific #}
+{#- platform specific #}
 {%- if not version.legacy %}
-{%- for component_key, component in components.items() %}
-.unity_{{version.underscore}}-{{component_key}}: &unity_{{version.underscore}}-{{component_key}}
+{% for platform_key, platform in platforms.items() %}
+.unity_{{version.underscore}}-{{platform_key}}: &unity_{{version.underscore}}-{{platform_key}}
   variables:
-    DOCKERFILE: {% if version.dockerfile %}{{version.dockerfile}}{% else %}Dockerfile{% endif %}
+    DOCKERFILE_NAME: {{version.platforms[platform_key].dockerfile_name}}
     VERSION: {{version.version}}
     BUILD: {{version.build}}
-    TAG: {{version_key}}-{{component_key}}
-    COMPONENTS: {% if version.components %}{{version.components[component_key] | default(component)}}{% else %}{{component}}{% endif %}
+    TAG: {{version_key}}-{{platform_key}}
+    COMPONENTS: {{version.platforms[platform_key].components}}
     DOWNLOAD_URL: {{version.download_url}}
     {% if version.sha1 %}SHA1: {{version.sha1}}{% endif %}
     {% if version.release_notes %}RELEASE_NOTES: {{version.release_notes}}{% endif %}
     {% if version.release_url %}RELEASE_URL: {{version.release_url}}{% endif %}
 
-build unity_{{version.underscore}}-{{component_key}}:
-  <<: *unity_{{version.underscore}}-{{component_key}}
+build unity_{{version.underscore}}-{{platform_key}}:
+  <<: *unity_{{version.underscore}}-{{platform_key}}
   <<: *build
 
-build-master unity_{{version.underscore}}-{{component_key}}:
-  <<: *unity_{{version.underscore}}-{{component_key}}
+build-master unity_{{version.underscore}}-{{platform_key}}:
+  <<: *unity_{{version.underscore}}-{{platform_key}}
   <<: *build-master
 {% endfor %}
 {% endif %}
