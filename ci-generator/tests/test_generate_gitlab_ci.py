@@ -128,6 +128,12 @@ class TestGitlabCiGenerator(TestCase):
             version_output = 'data/test_android_sdk_version.out.yml'
             self.do_test_snapshot(ci_generator, version_input, version_output)
 
+        with self.subTest("empty"):
+            ci_generator = GitlabCiGenerator()
+            version_input = 'data/test_empty.yml'
+            version_output = 'data/test_empty.out.yml'
+            self.do_test_snapshot(ci_generator, version_input, version_output)
+
     def do_test_snapshot(self, ci_generator, version_input, version_output):
         version_input_full_path = full_path_from_relative_path(version_input)
         version_output_full_path = full_path_from_relative_path(version_output)

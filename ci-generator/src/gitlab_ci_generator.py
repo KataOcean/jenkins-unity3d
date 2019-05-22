@@ -23,6 +23,8 @@ class GitlabCiGenerator(object):
         unity_versions = self.get_unity_versions_path()
         with open(unity_versions, "r") as f:
             unity_versions = yaml.safe_load(f.read())
+        if unity_versions is None:
+            unity_versions = {}
         unity_versions = self.get_versions_with_platforms(unity_versions)
         return self.set_dockerfile_to_unity_versions(unity_versions)
 
