@@ -10,8 +10,7 @@ class GitlabCiGenerator(object):
     def get_rendered_ci_template(self):
         context = {
             "versions": self.get_unity_versions() or {},
-            "platforms": self.get_unity_platforms(),
-            "base_platforms": self.get_unity_base_platforms(),
+            "platforms": self.get_unity_platforms()
         }
         return self.render_template(self.get_ci_yaml_template(), context)
 
@@ -39,6 +38,7 @@ class GitlabCiGenerator(object):
             if 'legacy' not in version or ('legacy' in version and not version.legacy):
                 unity_versions_with_platforms[version_key] = {
                     "platforms": {**self.get_unity_platforms()},
+                    "base_components": self.get_unity_base_components(),
                     **unity_versions[version_key],
                 }
         return unity_versions_with_platforms
@@ -66,7 +66,7 @@ class GitlabCiGenerator(object):
             return base_dockerfile
 
     @staticmethod
-    def get_unity_base_platforms():
+    def get_unity_base_components():
         return "Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL"
 
     @staticmethod

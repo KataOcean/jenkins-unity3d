@@ -56,7 +56,7 @@ before_script:
     VERSION: 2018.2.21
     BUILD: f1
     TAG: 2018.2.21f1
-    COMPONENTS: 
+    COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
     DOWNLOAD_URL: https://beta.unity3d.com/download/a122f5dc316d/UnitySetup-2018.2.21f1
     SHA1: 21907d5e21cb0bb6f682ee99032bdce297b67df0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.2.21f1
@@ -219,7 +219,7 @@ build-master unity_2018_2_21f1-facebook:
     VERSION: 2018.3.14
     BUILD: f1
     TAG: 2018.3.14f1
-    COMPONENTS: 
+    COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
     DOWNLOAD_URL: https://beta.unity3d.com/download/d0e9f15437b1/UnitySetup-2018.3.14f1
     SHA1: 5aef8e83f958ffb33e1e1734ef6b8d839723daa0
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.3.14f1
@@ -382,7 +382,7 @@ build-master unity_2018_3_14f1-facebook:
     VERSION: 2018.4.0
     BUILD: f1
     TAG: 2018.4.0f1
-    COMPONENTS: 
+    COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
     DOWNLOAD_URL: https://beta.unity3d.com/download/b6ffa8986c8d/UnitySetup-2018.4.0f1
     SHA1: ed912fd8972be4f2a93ce322bcb955a0f06f4dbc
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2018.4.0f1
@@ -545,7 +545,7 @@ build-master unity_2018_4_0f1-facebook:
     VERSION: 2019.1.3
     BUILD: f1
     TAG: 2019.1.3f1
-    COMPONENTS: 
+    COMPONENTS: Unity,Windows,Windows-Mono,Mac,Mac-Mono,WebGL
     DOWNLOAD_URL: https://beta.unity3d.com/download/dc414eb9ed43/UnitySetup-2019.1.3f1
     SHA1: ea97ef4c42180bd833e5b31b56f083b727a99cc8
     RELEASE_NOTES: https://unity3d.com/unity/whats-new/2019.1.3f1
