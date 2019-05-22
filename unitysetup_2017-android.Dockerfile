@@ -71,6 +71,8 @@ RUN echo "America/New_York" > /etc/timezone && \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 # Setup Android SDK/JDK Environment Variables
+ENV ANDROID_SDK_VERSION ${ANDROID_SDK_VERSION:-28}
+ENV ANDROID_SDK_COMPONENTS platforms;android-$ANDROID_SDK_VERSION
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre/
 ENV PATH ${PATH}:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
 ENV ANDROID_HOME /opt/android-sdk-linux

@@ -122,6 +122,12 @@ class TestGitlabCiGenerator(TestCase):
             version_output = 'data/test_unitysetup_2017_legacy.out.yml'
             self.do_test_snapshot(ci_generator, version_input, version_output)
 
+        with self.subTest("android_sdk_version"):
+            ci_generator = GitlabCiGenerator()
+            version_input = 'data/test_android_sdk_version.yml'
+            version_output = 'data/test_android_sdk_version.out.yml'
+            self.do_test_snapshot(ci_generator, version_input, version_output)
+
     def do_test_snapshot(self, ci_generator, version_input, version_output):
         version_input_full_path = full_path_from_relative_path(version_input)
         version_output_full_path = full_path_from_relative_path(version_output)
@@ -131,8 +137,8 @@ class TestGitlabCiGenerator(TestCase):
                 ci_generator.print()
         output = out.getvalue().strip()
         # uncomment to generate snapshots
-        # with open(version_output, 'w') as f:
-        #     f.write(output)
+        with open(version_output, 'w') as f:
+            f.write(output)
         with open(version_output_full_path) as f:
             self.maxDiff = None
             self.assertEqual(output, f.read())
