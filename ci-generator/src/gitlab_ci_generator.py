@@ -16,6 +16,7 @@ class GitlabCiGenerator(object):
 
     @staticmethod
     def get_ci_yaml_template():
+        # TODO: move to utils
         base_dirname = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..')
         return os.path.join(base_dirname, "gitlab-ci.jinja2")
 
