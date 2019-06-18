@@ -1,3 +1,25 @@
+test-ci-generator:
+  image: python:3.7-alpine
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  cache:
+    paths:
+      - .cache/pip
+      - ci-generator/venv/
+  before_script:
+    - cd ci-generator
+    - python -V
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install -r requirements.txt
+  script:
+    - coverage run -m unittest tests/test*.py
+    - coverage html
+  artifacts:
+    paths:
+      - ci-generator/htmlcov
+
 image: docker:latest
 
 variables:
@@ -121,25 +143,3 @@ build-master unity_{{version.underscore}}-{{platform_key}}:
 {% endif %}
 {% endfor %}
 {% endif %}
-
-test-ci-generator:
-  image: python:3.7.3
-  variables:
-    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
-  cache:
-    paths:
-      - .cache/pip
-      - ci-generator/venv/
-  before_script:
-    - cd ci-generator
-    - python -V
-    - pip install virtualenv
-    - virtualenv venv
-    - source venv/bin/activate
-    - pip install -r requirements.txt
-  script:
-    - coverage run -m unittest tests/test*.py
-    - coverage html
-  artifacts:
-    paths:
-      - ci-generator/htmlcov

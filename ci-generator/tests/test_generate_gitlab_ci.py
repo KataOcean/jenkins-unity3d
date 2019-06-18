@@ -143,7 +143,7 @@ class TestGitlabCiGenerator(TestCase):
                 ci_generator.print()
         output = out.getvalue().strip()
         # uncomment to generate snapshots
-        # with open(version_output, 'w') as f:
+        # with open(version_output_full_path, 'w') as f:
         #     f.write(output)
         with open(version_output_full_path) as f:
             self.maxDiff = None
