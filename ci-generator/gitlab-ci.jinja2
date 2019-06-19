@@ -17,7 +17,7 @@ test-ci-generator:
     - coverage run -m unittest tests/test*.py
     - coverage report
     - coverage html
-  coverage: '^TOTAL.*\s+(\d+\%)$'
+  coverage: '/^TOTAL.*\s+(\d+\%)$/'
   artifacts:
     paths:
       - ci-generator/htmlcov
