@@ -145,8 +145,8 @@ class TestGitlabCiGenerator(TestCase):
         output = out.getvalue().strip()
 
         if os.environ.get('UPDATE_SNAPSHOTS'):  # no cover
-            with open(version_output_full_path, 'w') as f:
-                f.write(output)
+            with open(version_output_full_path, 'w') as f:  # no cover
+                f.write(output)  # no cover
 
         with open(version_output_full_path) as f:
             self.maxDiff = None
