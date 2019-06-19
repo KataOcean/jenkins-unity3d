@@ -2,27 +2,36 @@ version: '3.3'
 
 services:
 
-  python: &python
+  .python: &python
     build:
       context: ci-generator/
       dockerfile: Dockerfile
+    image: ci-generator
     volumes:
       - ./:/app
     working_dir: /app/ci-generator
 
-  ci-generator-generate:
+  generate:
     <<: *python
-    command: [ "sh", "-c", "python generate_gitlab_ci.py > ../.gitlab-ci.yml" ]
+    command: [ "sh", "-c", "python src/gitlab_ci_generator.py > ../.gitlab-ci.yml" ]
 
-  ci-generator-update:
+  update:
     <<: *python
     command: [ "sh", "-c", "python src/check_new_version.py > ./unity_versions.yml" ]
 
-  ci-generator-test:
+  test:
     <<: *python
     command: [ "sh", "-c", "coverage run -m unittest tests/test*.py" ]
 
-  ci-generator-generate-snapshots:
+  test-report:
+    <<: *python
+    command: [ "sh", "-c", "coverage report" ]
+
+  test-report-html:
+    <<: *python
+    command: [ "sh", "-c", "coverage html" ]
+
+  update-test-snapshots:
     <<: *python
     command: [ "sh", "-c", "coverage run -m unittest tests/test*.py" ]
     environment:

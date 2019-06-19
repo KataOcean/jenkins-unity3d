@@ -79,11 +79,11 @@ class TestGitlabCiGenerator(TestCase):
         rendered_template = GitlabCiGenerator.render_template(template, {'context_data': 'test'})
         self.assertEqual(rendered_template, 'example with test')
 
-    def test_print(self):
+    def test_output(self):
         ci_generator = GitlabCiGenerator()
         with mock.patch(f'{self.class_path}.get_rendered_ci_template') as mocked_get_rendered_ci_template:
             with mock.patch('builtins.print') as mocked_print:
-                ci_generator.print()
+                ci_generator.output()
                 mocked_print.assert_called()
                 self.assertEqual(mocked_print.call_count, 2)
                 self.assertEqual(
@@ -141,7 +141,7 @@ class TestGitlabCiGenerator(TestCase):
         with captured_output() as (out, err):
             with mock.patch(f'{self.class_path}.get_unity_versions_path') as mocked_get_unity_versions_path:
                 mocked_get_unity_versions_path.return_value = version_input_full_path
-                ci_generator.print()
+                ci_generator.output()
         output = out.getvalue().strip()
 
         if os.environ.get('UPDATE_SNAPSHOTS'):  # no cover

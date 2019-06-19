@@ -90,7 +90,7 @@ class CheckNewVersion(object):
                 buf = afile.read(block_size)
         return hashing_algorithm.hexdigest()
 
-    def print(self):
+    def output(self):
         official_releases = self.get_latest_unity_official_releases_versions()
         current_versions = self.get_all_unity_versions()
         missing_versions = [version for version in official_releases if version not in current_versions]
@@ -112,4 +112,4 @@ class CheckNewVersion(object):
 
 
 if __name__ == '__main__':
-    CheckNewVersion().print()
+    CheckNewVersion().output()

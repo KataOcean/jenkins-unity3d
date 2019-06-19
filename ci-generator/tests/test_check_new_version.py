@@ -95,6 +95,6 @@ class TestGitlabCiGenerator(TestCase):
         result = CheckNewVersion.sha1(file_name)
         self.assertEqual(result, 'b0d8c80edcc0e501b4fbf7c2d09e6205e7d77ec8')
 
-    def test_print(self):
+    def test_output(self):
         # TODO: complete this test using similar snapshot testing pattern from gitlab_ci_generator.py
         pass

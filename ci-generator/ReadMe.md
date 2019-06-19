@@ -12,10 +12,10 @@ cat unity_versions.py >> unity_versions.old.yml
 echo '' > unity_versions.py
 
 # grab latest versions from unity
-docker-compose run --rm ci-generator-update
+docker-compose run --rm update
 
 # generate .gitlab-ci.yml using updated versions
-docker-compose run --rm ci-generator-generate
+docker-compose run --rm generate
 ```
 
 ## Where to find hashes
@@ -61,14 +61,23 @@ The generator script will automatically try to use the `Dockerfile` for the comp
 I wrote these tests to make it easier to maintain the generator. It's only a way to get a breakpoint anywhere in the code, don't be scared ;)
 
 ```bash
-docker-compose run --rm ci-generator-test
+docker-compose run --rm test
 ```
 
-Coverage report is generated, open `htmlcov/index.html` :+1:
+### Failing snapshot tests
 
 If tests are failing due to updated ci template, you can generate snapshot tests using the following command:
 
 ```bash
-docker-compose run --rm ci-generator-generate-snapshots
+docker-compose run --rm update-test-snapshots
 ```
 
+### Get code coverage report
+
+```bash
+docker-compose run --rm test
+docker-compose run --rm test-report
+docker-compose run --rm test-report-html
+```
+
+Then open `htmlcov/index.html` :+1:
