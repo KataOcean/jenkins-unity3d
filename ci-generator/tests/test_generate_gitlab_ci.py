@@ -7,6 +7,7 @@ from tests.utils import full_path_from_relative_path, captured_output
 
 class TestGitlabCiGenerator(TestCase):
     class_path = 'src.gitlab_ci_generator.GitlabCiGenerator'
+    update_snapshots = False
 
     def test_get_rendered_ci_template(self):
         ci_generator = GitlabCiGenerator()
@@ -78,11 +79,11 @@ class TestGitlabCiGenerator(TestCase):
         rendered_template = GitlabCiGenerator.render_template(template, {'context_data': 'test'})
         self.assertEqual(rendered_template, 'example with test')
 
-    def test_print(self):
+    def test_output(self):
         ci_generator = GitlabCiGenerator()
         with mock.patch(f'{self.class_path}.get_rendered_ci_template') as mocked_get_rendered_ci_template:
             with mock.patch('builtins.print') as mocked_print:
-                ci_generator.print()
+                ci_generator.output()
                 mocked_print.assert_called()
                 self.assertEqual(mocked_print.call_count, 2)
                 self.assertEqual(
@@ -140,11 +141,13 @@ class TestGitlabCiGenerator(TestCase):
         with captured_output() as (out, err):
             with mock.patch(f'{self.class_path}.get_unity_versions_path') as mocked_get_unity_versions_path:
                 mocked_get_unity_versions_path.return_value = version_input_full_path
-                ci_generator.print()
+                ci_generator.output()
         output = out.getvalue().strip()
-        # uncomment to generate snapshots
-        # with open(version_output, 'w') as f:
-        #     f.write(output)
+
+        if os.environ.get('UPDATE_SNAPSHOTS'):  # no cover
+            with open(version_output_full_path, 'w') as f:  # no cover
+                f.write(output)  # no cover
+
         with open(version_output_full_path) as f:
             self.maxDiff = None
             self.assertEqual(output, f.read())
