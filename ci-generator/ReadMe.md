@@ -1,51 +1,28 @@
 # Script to generate the `.gitlab-ci.yml`
 
-This is a python script that will generate the `.gitlab-ci.yml` to make it easier to build desired unity versions. 
+This is a python script that will generate the `.gitlab-ci.yml` to make it easier to build desired unity versions. For easier usage, use `docker-compose`.
 
-## 1. Add version meta data
-
-Specify desired versions in `unity_versions.py`. Move already built versions to `unity_versions.old.yml`
-
-## 2. Install requirements
-
-- Install python
-- Install script requirements
+## 1. Move existing versions from `unity_versions.py` to unity_versions.old.yml`
 
 ```bash
-# Executed in this folder, ci-generator/
-pip install -r requirements.txt
+# move existing versions to old versions
+cat unity_versions.py >> unity_versions.old.yml
+
+# empty unity_versions.py
+echo '' > unity_versions.py
+
+# grab latest versions from unity
+docker-compose run --rm update
+
+# generate .gitlab-ci.yml using updated versions
+docker-compose run --rm generate
 ```
-
-## 3. Generate new gitlab-ci.yml config
-
-### 3.1 Powershell 5.1 variant
-
-This is only if you're using powershell 5.1. The commands below are specific to ensure the output `.gitlab-ci.yml` file is encoded with UTF-8 without BOM.
-
-```powershell
-# Executed in this folder, ci-generator/
-$path = Resolve-Path ../.gitlab-ci.yml
-$result = python generate_gitlab_ci.py
-$encoding = New-Object Text.UTF8Encoding $False
-[IO.File]::WriteAllLines($path, $result, $encoding)
-```
-
-### 3.2 Bash/Powershell 6+ variant
-
-```bash
-# Executed in this folder, ci-generator/
-python generate_gitlab_ci.py > ../.gitlab-ci.yml
-```
-
-## 4. Done
-
-:tada:
 
 ## Where to find hashes
 
 There doesn't seem to be an official place for this, but one can find a lot of information in [the well maintained archlinux unity-editor AUR](https://aur.archlinux.org/cgit/aur.git/?h=unity-editor). For the latest version, you can find them at the same place where unity-hub electron application finds them: https://public-cdn.cloud.unity3d.com/hub/prod/releases-linux.json
 
-pro tip: use [jq](https://stedolan.github.io/jq/)
+Pro tip: use [jq](https://stedolan.github.io/jq/)
 
 ```bash
 curl https://public-cdn.cloud.unity3d.com/hub/prod/releases-linux.json | jq '.'
@@ -65,7 +42,7 @@ sha1sum unity.deb | awk '{print $1}'
 
 ## Use a different Dockerfile for the version
 
-Do something like this:
+Set something like this in `unity_versions.yml`:
 
 ```yaml
 2018.4.0f1:
@@ -73,26 +50,34 @@ Do something like this:
   # ...
 ```
 
+Then generate the `.gitlab-ci.yml` file again.
+
 ## Use a different Dockerfile for a component
 
-The script will automatically try to use the Dockerfile for the component so if you set a `dockerfile: unitysetup.Dockerfile`, the `android` component will use `unitysetup-android.Dockerfile` if it exists, otherwise, it will fallback to `unitysetup.Dockerfile`.
+The generator script will automatically try to use the `Dockerfile` for the component so if you set a `dockerfile: unitysetup.Dockerfile`, the `android` component will use `unitysetup-android.Dockerfile` if it exists, otherwise, it will fallback to `unitysetup.Dockerfile`.
 
 ## Development and testing
 
-It would be neat if this ran in the CI, but it's getting a bit meta here. I wrote test to make it easier to maintain the generator. It's only a way to get a breakpoint quickly anywhere in the code.
-
-### locally
+I wrote these tests to make it easier to maintain the generator. It's only a way to get a breakpoint anywhere in the code, don't be scared ;)
 
 ```bash
-pip install -r requirements.txt
-coverage run -m unittest tests/test*.py
+docker-compose run --rm test
 ```
 
-### docker
+### Failing snapshot tests
+
+If tests are failing due to updated ci template, you can generate snapshot tests using the following command:
 
 ```bash
-docker run --rm -it -v "$PWD/../:/app" python:3.7-alpine sh -c \
-'cd /app/ci-generator && pip install -r requirements.txt && coverage run -m unittest tests/test*.py'
+docker-compose run --rm update-test-snapshots
 ```
 
-Coverage report is generated, open `htmlcov/index.html` :+1:
+### Get code coverage report
+
+```bash
+docker-compose run --rm test
+docker-compose run --rm test-report
+docker-compose run --rm test-report-html
+```
+
+Then open `htmlcov/index.html` :+1:
